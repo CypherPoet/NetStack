@@ -1,0 +1,439 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/Endpoint.swift",
+      "line": 4,
+      "symbol": "Endpoint",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/Endpoint.swift",
+      "line": 5,
+      "symbol": "Endpoint.host",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/Endpoint.swift",
+      "line": 6,
+      "symbol": "Endpoint.path",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/Endpoint.swift",
+      "line": 7,
+      "symbol": "Endpoint.scheme",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/Endpoint.swift",
+      "line": 8,
+      "symbol": "Endpoint.queryItems",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/Endpoint.swift",
+      "line": 11,
+      "symbol": "Endpoint.init(host:path:scheme:queryItems:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/Endpoint.swift",
+      "line": 26,
+      "symbol": "Endpoint",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/Endpoint.swift",
+      "line": 39,
+      "symbol": "Endpoint.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 4,
+      "symbol": "HTTPContentType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 5,
+      "symbol": "HTTPContentType.json",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 4,
+      "symbol": "HTTPHeaderField",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 5,
+      "symbol": "HTTPHeaderField.accept",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 6,
+      "symbol": "HTTPHeaderField.contentType",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 4,
+      "symbol": "HTTPMethod",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 5,
+      "symbol": "HTTPMethod.rawValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 9,
+      "symbol": "HTTPMethod",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 10,
+      "symbol": "HTTPMethod.get",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 11,
+      "symbol": "HTTPMethod.post",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 12,
+      "symbol": "HTTPMethod.put",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 13,
+      "symbol": "HTTPMethod.patch",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 14,
+      "symbol": "HTTPMethod.delete",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError+parseFrom.swift",
+      "line": 6,
+      "symbol": "NetStackError.parseFrom(_:and:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 4,
+      "symbol": "NetStackError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 4,
+      "symbol": "NetStackError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 5,
+      "symbol": "NetStackError.missingURL",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 6,
+      "symbol": "NetStackError.missingDownloadURL",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 16,
+      "symbol": "NetStackError.missingResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 17,
+      "symbol": "NetStackError.responseMissingData",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 18,
+      "symbol": "NetStackError.requestFailed(error:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 19,
+      "symbol": "NetStackError.unauthorizedRequest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 20,
+      "symbol": "NetStackError.badRequest(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 21,
+      "symbol": "NetStackError.tooManyRequests(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 22,
+      "symbol": "NetStackError.serverIsBusy(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 23,
+      "symbol": "NetStackError.severSideFailure(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 24,
+      "symbol": "NetStackError.notFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 25,
+      "symbol": "NetStackError.unsuccessfulRequest(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 26,
+      "symbol": "NetStackError.generic(error:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 30,
+      "symbol": "NetStackError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetStackError.swift",
+      "line": 69,
+      "symbol": "NetStackError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetworkMethod.swift",
+      "line": 10,
+      "symbol": "NetworkMethod.get",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/NetworkMethod.swift",
+      "line": 11,
+      "symbol": "NetworkMethod.post",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/RequestConfigurator.swift",
+      "line": 4,
+      "symbol": "HTTPHeaders",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/RequestConfigurator.swift",
+      "line": 7,
+      "symbol": "RequestConfigurator",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Core/RequestConfigurator.swift",
+      "line": 9,
+      "symbol": "RequestConfigurator.configure(headers:for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
+      "line": 5,
+      "symbol": "ModelTransportRequestPublishing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
+      "line": 13,
+      "symbol": "ModelTransportRequestPublishing.perform(_:with:maxRetries:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
+      "line": 20,
+      "symbol": "ModelTransportRequestPublishing.encode(dataFor:withEncoder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
+      "line": 26,
+      "symbol": "ModelTransportRequestPublishing.encode(dataFor:withEncoder:sendingInBodyOf:decodingWith:maxRetries:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
+      "line": 38,
+      "symbol": "ModelTransportRequestPublishing",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
+      "line": 70,
+      "symbol": "ModelTransportRequestPublishing.encode(dataFor:withEncoder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
+      "line": 87,
+      "symbol": "ModelTransportRequestPublishing.encode(dataFor:withEncoder:sendingInBodyOf:decodingWith:maxRetries:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/Session Data Task Publishing/SessionDataPublisher.swift",
+      "line": 4,
+      "symbol": "SessionDataPublisher",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/Session Data Task Publishing/SessionDataPublisher.swift",
+      "line": 5,
+      "symbol": "SessionDataPublisher.session",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/Session Data Task Publishing/SessionDataPublisher.swift",
+      "line": 8,
+      "symbol": "SessionDataPublisher.init(session:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/Session Data Task Publishing/SessionDataTaskPublishing.swift",
+      "line": 4,
+      "symbol": "SessionDataTaskPublishing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/Session Data Task Publishing/SessionDataTaskPublishing.swift",
+      "line": 5,
+      "symbol": "SessionDataTaskPublishing.session",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/Session Data Task Publishing/SessionDataTaskPublishing.swift",
+      "line": 7,
+      "symbol": "SessionDataTaskPublishing.dataTaskPublisher(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/Session Data Task Publishing/SessionDataTaskPublishing.swift",
+      "line": 12,
+      "symbol": "SessionDataTaskPublishing",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/Session Data Task Publishing/SessionDataTaskPublishing.swift",
+      "line": 14,
+      "symbol": "SessionDataTaskPublishing.dataTaskPublisher(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/TransportRequestPublishing.swift",
+      "line": 5,
+      "symbol": "TransportRequestPublishing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/TransportRequestPublishing.swift",
+      "line": 7,
+      "symbol": "TransportRequestPublishing.subscriptionQueue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/TransportRequestPublishing.swift",
+      "line": 20,
+      "symbol": "TransportRequestPublishing",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/briansipple/Projects/swift/Packages/NetStack"
+}
