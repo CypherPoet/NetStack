@@ -1,9 +1,11 @@
 import Foundation
 
 
-public struct HTTPMethod: Hashable {
+public struct HTTPMethod {
     public let rawValue: String
 }
+
+extension HTTPMethod: Hashable {}
 
 
 extension HTTPMethod {

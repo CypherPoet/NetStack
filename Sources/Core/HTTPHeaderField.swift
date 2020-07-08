@@ -1,8 +1,15 @@
 import Foundation
 
 
-public enum HTTPHeaderField {
-    static let accept = "Accept"
-    static let contentType = "Content-Type"
-    static let cacheControl = "Cache-Control"
+public struct HTTPHeaderField {
+    public let rawValue: String
+}
+
+extension HTTPHeaderField: Hashable {}
+
+
+extension HTTPHeaderField {
+    public static let accept = HTTPHeaderField(rawValue: "Accept")
+    public static let contentType = HTTPHeaderField(rawValue: "Content-Type")
+    public static let cacheControl = HTTPHeaderField(rawValue: "Cache-Control")
 }

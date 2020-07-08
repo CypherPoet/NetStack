@@ -332,7 +332,7 @@
     {
       "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
       "line": 26,
-      "symbol": "ModelTransportRequestPublishing.encode(dataFor:withEncoder:sendingInBodyOf:decodingWith:maxRetries:)",
+      "symbol": "ModelTransportRequestPublishing.encode(dataFor:withEncoder:sendingintoBodyOf:decodingWith:maxRetries:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -353,7 +353,7 @@
     {
       "file": "/Users/briansipple/Projects/swift/Packages/NetStack/Sources/Networking/ModelTransportRequestPublishing.swift",
       "line": 87,
-      "symbol": "ModelTransportRequestPublishing.encode(dataFor:withEncoder:sendingInBodyOf:decodingWith:maxRetries:)",
+      "symbol": "ModelTransportRequestPublishing.encode(dataFor:withEncoder:sendingintoBodyOf:decodingWith:maxRetries:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },

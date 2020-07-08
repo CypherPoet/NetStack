@@ -4,29 +4,30 @@ import Combine
 
 public protocol ModelTransportRequestPublishing: TransportRequestPublishing {
 
-    /// The instance of URLSession used for calling `.dataTaskPublisher`
-    ///
-    /// Default: `URLSession.shared`
-    var session: URLSession { get }
-
-
     func perform<Model: Decodable>(
         _ request: URLRequest,
-        with decoder: JSONDecoder,
+        decodingWith decoder: JSONDecoder,
         maxRetries allowedRetries: Int
     ) -> AnyPublisher<Model, NetStackError>
 
 
     func encode<Model: Encodable>(
         dataFor model: Model,
-        withEncoder encoder: JSONEncoder
-    ) -> AnyPublisher<Data, NetStackError>
+        using encoder: JSONEncoder
+    ) -> AnyPublisher<Data, Error>
 
 
-    func encode<Model: Codable>(
-        dataFor: Model,
-        withEncoder: JSONEncoder,
-        sendingInBodyOf request: URLRequest,
+    func encode<Model: Encodable>(
+        dataFor model: Model,
+        intoBodyOf request: URLRequest,
+        using encoder: JSONEncoder
+    ) -> AnyPublisher<URLRequest, NetStackError>
+
+
+    func send<Model: Codable>(
+        encodedDataFor model: Model,
+        inBodyOf request: URLRequest,
+        encodingWith encoder: JSONEncoder,
         decodingWith decoder: JSONDecoder,
         maxRetries allowedRetries: Int
     ) -> AnyPublisher<Model, NetStackError>
@@ -37,31 +38,40 @@ public protocol ModelTransportRequestPublishing: TransportRequestPublishing {
 // MARK: - Default Core Functionality
 public extension ModelTransportRequestPublishing {
 
-
-    /// Uses the `session` to perform a data task for a `URLRequest`,
-    /// then attempts to handle request errors and data decoding.
-    /// - Parameters:
-    ///   - receptionQueue: A queue to be used for parsing the response -- ideally off
-    ///     the main thread.
     func perform<Model: Decodable>(
         _ request: URLRequest,
-        with decoder: JSONDecoder = .init(),
+        decodingWith decoder: JSONDecoder = .init(),
         maxRetries allowedRetries: Int = 0
     ) -> AnyPublisher<Model, NetStackError> {
         perform(
             request,
             maxRetries: allowedRetries
         )
-        .decode(type: Model.self, decoder: decoder)
-        .mapError { error in
-            switch error {
-            case (let error as DecodingError):
-                return .dataDecodingFailed(error)
-            case (let error as NetStackError):
-                return error
-            default:
-                return .generic(error: error)
-            }
+        .flatMap { networkResponse in
+            return Just(networkResponse)
+                .map(\.body)
+                .replaceNil(with: Data())
+                .decode(type: Model.self, decoder: decoder)
+                .mapError { error in
+                    switch error {
+                    case (let error as DecodingError):
+                        return NetStackError(
+                            code: .dataDecodingFailed,
+                            request: request,
+                            response: networkResponse,
+                            underlyingError: error
+                        )
+                    case (let error as NetStackError):
+                        return error
+                    default:
+                        return NetStackError(
+                            code: .unknown,
+                            request: request,
+                            response: networkResponse,
+                            underlyingError: error
+                        )
+                    }
+                }
         }
         .eraseToAnyPublisher()
     }
@@ -69,37 +79,58 @@ public extension ModelTransportRequestPublishing {
 
     func encode<Model: Encodable>(
         dataFor model: Model,
-        withEncoder encoder: JSONEncoder = .init()
-    ) -> AnyPublisher<Data, NetStackError> {
+        using encoder: JSONEncoder = .init()
+    ) -> AnyPublisher<Data, Error> {
         Just(model)
             .encode(encoder: encoder)
-            .mapError { error in
-                if let encodingError = error as? EncodingError {
-                    return .dataEncodingFailed(encodingError)
-                } else {
-                    return .generic(error: error)
-                }
-            }
             .eraseToAnyPublisher()
     }
 
 
-    func encode<Model: Codable>(
+    func encode<Model: Encodable>(
         dataFor model: Model,
-        withEncoder encoder: JSONEncoder = .init(),
-        sendingInBodyOf request: URLRequest,
-        decodingWith decoder: JSONDecoder = .init(),
-        maxRetries allowedRetries: Int = 0
-    ) -> AnyPublisher<Model, NetStackError> {
-        encode(dataFor: model, withEncoder: encoder)
+        intoBodyOf request: URLRequest,
+        using encoder: JSONEncoder = .init()
+    ) -> AnyPublisher<URLRequest, NetStackError> {
+        encode(dataFor: model, using: encoder)
+            .mapError { error in
+                switch error {
+                case (let error as EncodingError):
+                    return NetStackError(
+                        code: .dataEncodingFailed,
+                        request: request,
+                        response: nil,
+                        underlyingError: error
+                    )
+                default:
+                    return NetStackError(
+                        code: .unknown,
+                        request: request,
+                        response: nil,
+                        underlyingError: error
+                    )
+                }
+            }
             .map { data in
                 var request = request
                 request.httpBody = data
 
                 return request
             }
+            .eraseToAnyPublisher()
+    }
+
+
+    func send<Model: Codable>(
+        encodedDataFor model: Model,
+        inBodyOf request: URLRequest,
+        encodingWith encoder: JSONEncoder = .init(),
+        decodingWith decoder: JSONDecoder = .init(),
+        maxRetries allowedRetries: Int = 0
+    ) -> AnyPublisher<Model, NetStackError> {
+        encode(dataFor: model, intoBodyOf: request)
             .flatMap { request in
-                self.perform(request, with: decoder, maxRetries: allowedRetries)
+                self.perform(request, decodingWith: decoder, maxRetries: allowedRetries)
             }
             .eraseToAnyPublisher()
     }

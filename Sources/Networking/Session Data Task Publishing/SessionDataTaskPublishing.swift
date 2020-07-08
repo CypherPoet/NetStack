@@ -11,7 +11,9 @@ public protocol SessionDataTaskPublishing: class {
 // MARK: - Default Implementation
 extension SessionDataTaskPublishing {
 
-    func dataTaskPublisher(for request: URLRequest) -> URLSession.DataTaskPublisher {
+    public var session: URLSession { .shared }
+
+    public func dataTaskPublisher(for request: URLRequest) -> URLSession.DataTaskPublisher {
         session.dataTaskPublisher(for: request)
     }
 }

@@ -1,18 +1,19 @@
 import Foundation
 
 
-public typealias HTTPHeaders = [String: String]
-
-
 public enum RequestConfigurator {
+    public typealias HTTPHeaders = [HTTPHeaderField: String]
     
     public static func configure(
-        headers: HTTPHeaders,
+        headers: HTTPHeaders = [:],
+        method: HTTPMethod = .get,
         for request: inout URLRequest
     ) {
-        for (key, value) in headers {
-            request.setValue(value, forHTTPHeaderField: key)
+        for (headerField, value) in headers {
+            request.setValue(value, forHTTPHeaderField: headerField.rawValue)
         }
+
+        request.httpMethod = method.rawValue
     }
 }
  
