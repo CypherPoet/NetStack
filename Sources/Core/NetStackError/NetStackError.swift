@@ -1,8 +1,7 @@
 import Foundation
 
 
-public struct NetStackError: Error {
-
+public struct NetStackError {
     /// The high-level classification of this error.
     public let code: Code
 
@@ -15,6 +14,8 @@ public struct NetStackError: Error {
     /// Used to store more information about the responsible error.
     public let underlyingError: Error?
 }
+
+extension NetStackError: Error {}
 
 
 // MARK: - Identifiable
