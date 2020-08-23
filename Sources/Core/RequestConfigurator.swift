@@ -3,17 +3,31 @@ import Foundation
 
 public enum RequestConfigurator {
     public typealias HTTPHeaders = [HTTPHeaderField: String]
-    
+
     public static func configure(
-        headers: HTTPHeaders = [:],
+        _ request: inout URLRequest,
+        withHeaders headers: HTTPHeaders = [:],
         method: HTTPMethod = .get,
-        for request: inout URLRequest
+        body: Data? = nil
     ) {
         for (headerField, value) in headers {
             request.setValue(value, forHTTPHeaderField: headerField.rawValue)
         }
 
         request.httpMethod = method.rawValue
+        request.httpBody = body
     }
 }
  
+
+
+extension RequestConfigurator {
+
+    /// Common sets of `HTTPHeaders`
+    public enum DefaultHeaders {
+        static let postJSON: HTTPHeaders = [
+            .accept: HTTPContentType.json.rawValue,
+            .contentType: HTTPContentType.json.rawValue,
+        ]
+    }
+}
