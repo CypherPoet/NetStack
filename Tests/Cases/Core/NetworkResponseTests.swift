@@ -1,5 +1,4 @@
 import XCTest
-import Combine
 @testable import NetStack
 
 
@@ -29,6 +28,8 @@ final class NetworkResponseTests: XCTestCase {
 
     override func tearDownWithError() throws {
         sut = nil
+
+        try super.tearDownWithError()
     }
 
 
