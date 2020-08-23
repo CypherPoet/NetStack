@@ -14,7 +14,7 @@
     <a title="ModelTransportRequestPublishing Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (12% documented)</p>
+        <p><a href="../index.html"> Docs</a> (22% documented)</p>
         <p class="header-right"><a href="https://github.com/CypherPoet/NetStack"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -29,28 +29,8 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Classes/SessionDataPublisher.html">SessionDataPublisher</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Enums/HTTPContentType.html">HTTPContentType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/HTTPHeaderField.html">HTTPHeaderField</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/NetStackError.html">NetStackError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/NetworkMethod.html">NetworkMethod</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Enums/RequestConfigurator.html">RequestConfigurator</a>
               </li>
@@ -77,15 +57,25 @@
                 <a href="../Structs/Endpoint.html">Endpoint</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/HTTPContentType.html">HTTPContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPHeaderField.html">HTTPHeaderField</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/HTTPMethod.html">HTTPMethod</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:8NetStack11HTTPHeadersa">HTTPHeaders</a>
+                <a href="../Structs/HTTPStatus.html">HTTPStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetStackError.html">NetStackError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetStackError/Code.html">– Code</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetworkResponse.html">NetworkResponse</a>
               </li>
             </ul>
           </li>
@@ -110,38 +100,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack31ModelTransportRequestPublishingP7sessionSo12NSURLSessionCvp"></a>
-                    <a name="//apple_ref/swift/Property/session" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack31ModelTransportRequestPublishingP7sessionSo12NSURLSessionCvp">session</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The instance of URLSession used for calling <code>.dataTaskPublisher</code></p>
-
-<p>Default: <code>URLSession.shared</code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8NetStack31ModelTransportRequestPublishingP7perform_4with10maxRetries7Combine12AnyPublisherVyqd__AA0aB5ErrorOG10Foundation10URLRequestV_AM11JSONDecoderCSitSeRd__lF"></a>
-                    <a name="//apple_ref/swift/Method/perform(_:with:maxRetries:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack31ModelTransportRequestPublishingP7perform_4with10maxRetries7Combine12AnyPublisherVyqd__AA0aB5ErrorOG10Foundation10URLRequestV_AM11JSONDecoderCSitSeRd__lF">perform(_:<wbr>with:<wbr>maxRetries:<wbr>)</a>
+                    <a name="/s:8NetStack31ModelTransportRequestPublishingP7perform_12decodingWith10maxRetries7Combine12AnyPublisherVyqd__AA0aB5ErrorVG10Foundation10URLRequestV_AM11JSONDecoderCSitSeRd__lF"></a>
+                    <a name="//apple_ref/swift/Method/perform(_:decodingWith:maxRetries:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack31ModelTransportRequestPublishingP7perform_12decodingWith10maxRetries7Combine12AnyPublisherVyqd__AA0aB5ErrorVG10Foundation10URLRequestV_AM11JSONDecoderCSitSeRd__lF">perform(_:<wbr>decodingWith:<wbr>maxRetries:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -157,8 +118,7 @@
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p>Uses the <code>session</code> to perform a data task for a <code>URLRequest</code>,
-then attempts to handle request errors and data decoding.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
@@ -167,9 +127,9 @@ then attempts to handle request errors and data decoding.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">perform</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span>
     <span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span>
-    <span class="n">with</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span><span class="p">,</span>
+    <span class="n">decodingWith</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span><span class="p">,</span>
     <span class="n">maxRetries</span> <span class="nv">allowedRetries</span><span class="p">:</span> <span class="kt">Int</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">,</span> <span class="kt"><a href="../Enums/NetStackError.html">NetStackError</a></span><span class="o">&gt;</span></code></pre>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">,</span> <span class="kt"><a href="../Structs/NetStackError.html">NetStackError</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -179,9 +139,9 @@ then attempts to handle request errors and data decoding.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack31ModelTransportRequestPublishingP6encode7dataFor11withEncoder7Combine12AnyPublisherVy10Foundation4DataVAA0aB5ErrorOGqd___AJ11JSONEncoderCtSERd__lF"></a>
-                    <a name="//apple_ref/swift/Method/encode(dataFor:withEncoder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack31ModelTransportRequestPublishingP6encode7dataFor11withEncoder7Combine12AnyPublisherVy10Foundation4DataVAA0aB5ErrorOGqd___AJ11JSONEncoderCtSERd__lF">encode(dataFor:<wbr>withEncoder:<wbr>)</a>
+                    <a name="/s:8NetStack31ModelTransportRequestPublishingP6encode7dataFor5using7Combine12AnyPublisherVy10Foundation4DataVs5Error_pGqd___AJ11JSONEncoderCtSERd__lF"></a>
+                    <a name="//apple_ref/swift/Method/encode(dataFor:using:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack31ModelTransportRequestPublishingP6encode7dataFor5using7Combine12AnyPublisherVy10Foundation4DataVs5Error_pGqd___AJ11JSONEncoderCtSERd__lF">encode(dataFor:<wbr>using:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -206,8 +166,8 @@ then attempts to handle request errors and data decoding.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">encode</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span>
     <span class="n">dataFor</span> <span class="nv">model</span><span class="p">:</span> <span class="kt">Model</span><span class="p">,</span>
-    <span class="n">withEncoder</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">JSONEncoder</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Data</span><span class="p">,</span> <span class="kt"><a href="../Enums/NetStackError.html">NetStackError</a></span><span class="o">&gt;</span></code></pre>
+    <span class="n">using</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">JSONEncoder</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Data</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -217,9 +177,9 @@ then attempts to handle request errors and data decoding.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack31ModelTransportRequestPublishingP6encode7dataFor11withEncoder15sendingintoBodyOf12decodingWith10maxRetries7Combine12AnyPublisherVyqd__AA0aB5ErrorOGqd___10Foundation11JSONEncoderCAP10URLRequestVAP11JSONDecoderCSitSeRd__SERd__lF"></a>
-                    <a name="//apple_ref/swift/Method/encode(dataFor:withEncoder:sendingintoBodyOf:decodingWith:maxRetries:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack31ModelTransportRequestPublishingP6encode7dataFor11withEncoder15sendingintoBodyOf12decodingWith10maxRetries7Combine12AnyPublisherVyqd__AA0aB5ErrorOGqd___10Foundation11JSONEncoderCAP10URLRequestVAP11JSONDecoderCSitSeRd__SERd__lF">encode(dataFor:<wbr>withEncoder:<wbr>sendingintoBodyOf:<wbr>decodingWith:<wbr>maxRetries:<wbr>)</a>
+                    <a name="/s:8NetStack31ModelTransportRequestPublishingP6encode7dataFor10intoBodyOf5using7Combine12AnyPublisherVy10Foundation10URLRequestVAA0aB5ErrorVGqd___AmK11JSONEncoderCtSERd__lF"></a>
+                    <a name="//apple_ref/swift/Method/encode(dataFor:intoBodyOf:using:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack31ModelTransportRequestPublishingP6encode7dataFor10intoBodyOf5using7Combine12AnyPublisherVy10Foundation10URLRequestVAA0aB5ErrorVGqd___AmK11JSONEncoderCtSERd__lF">encode(dataFor:<wbr>intoBodyOf:<wbr>using:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -242,13 +202,52 @@ then attempts to handle request errors and data decoding.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">encode</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span>
-    <span class="nv">dataFor</span><span class="p">:</span> <span class="kt">Model</span><span class="p">,</span>
-    <span class="nv">withEncoder</span><span class="p">:</span> <span class="kt">JSONEncoder</span><span class="p">,</span>
-    <span class="n">sendingintoBodyOf</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">encode</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">dataFor</span> <span class="nv">model</span><span class="p">:</span> <span class="kt">Model</span><span class="p">,</span>
+    <span class="n">intoBodyOf</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span>
+    <span class="n">using</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">JSONEncoder</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">URLRequest</span><span class="p">,</span> <span class="kt"><a href="../Structs/NetStackError.html">NetStackError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8NetStack31ModelTransportRequestPublishingP4send14encodedDataFor8inBodyOf12encodingWith08decodingO010maxRetries7Combine12AnyPublisherVyqd__AA0aB5ErrorVGqd___10Foundation10URLRequestVAP11JSONEncoderCAP11JSONDecoderCSitSeRd__SERd__lF"></a>
+                    <a name="//apple_ref/swift/Method/send(encodedDataFor:inBodyOf:encodingWith:decodingWith:maxRetries:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack31ModelTransportRequestPublishingP4send14encodedDataFor8inBodyOf12encodingWith08decodingO010maxRetries7Combine12AnyPublisherVyqd__AA0aB5ErrorVGqd___10Foundation10URLRequestVAP11JSONEncoderCAP11JSONDecoderCSitSeRd__SERd__lF">send(encodedDataFor:<wbr>inBodyOf:<wbr>encodingWith:<wbr>decodingWith:<wbr>maxRetries:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">send</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">encodedDataFor</span> <span class="nv">model</span><span class="p">:</span> <span class="kt">Model</span><span class="p">,</span>
+    <span class="n">inBodyOf</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span>
+    <span class="n">encodingWith</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">JSONEncoder</span><span class="p">,</span>
     <span class="n">decodingWith</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span><span class="p">,</span>
     <span class="n">maxRetries</span> <span class="nv">allowedRetries</span><span class="p">:</span> <span class="kt">Int</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">,</span> <span class="kt"><a href="../Enums/NetStackError.html">NetStackError</a></span><span class="o">&gt;</span></code></pre>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Model</span><span class="p">,</span> <span class="kt"><a href="../Structs/NetStackError.html">NetStackError</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>

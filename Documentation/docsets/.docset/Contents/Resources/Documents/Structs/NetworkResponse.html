@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>HTTPMethod Structure Reference</title>
+    <title>NetworkResponse Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/HTTPMethod" class="dashAnchor"></a>
-    <a title="HTTPMethod Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/NetworkResponse" class="dashAnchor"></a>
+    <a title="NetworkResponse Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (22% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        HTTPMethod Structure Reference
+        NetworkResponse Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -84,11 +84,10 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>HTTPMethod</h1>
+            <h1>NetworkResponse</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HTTPMethod</span></code></pre>
-<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">HTTPMethod</span><span class="p">:</span> <span class="kt">Hashable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NetworkResponse</span></code></pre>
 
                 </div>
               </div>
@@ -101,9 +100,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack10HTTPMethodV8rawValueSSvp"></a>
-                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack10HTTPMethodV8rawValueSSvp">rawValue</a>
+                    <a name="/s:8NetStack15NetworkResponseV7request10Foundation10URLRequestVvp"></a>
+                    <a name="//apple_ref/swift/Property/request" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack15NetworkResponseV7request10Foundation10URLRequestVvp">request</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -118,7 +117,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span></code></pre>
 
                         </div>
                       </div>
@@ -128,9 +127,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack10HTTPMethodV3getACvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/get" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack10HTTPMethodV3getACvpZ">get</a>
+                    <a name="/s:8NetStack15NetworkResponseV4body10Foundation4DataVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack15NetworkResponseV4body10Foundation4DataVSgvp">body</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -145,7 +144,91 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">get</span><span class="p">:</span> <span class="kt">HTTPMethod</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">body</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Init"></a>
+                <a name="//apple_ref/swift/Section/Init" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Init"></a>
+                  <h3 class="section-name"><p>Init</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8NetStack15NetworkResponseV7request8response4bodyAC10Foundation10URLRequestV_So17NSHTTPURLResponseCAG4DataVSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(request:response:body:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack15NetworkResponseV7request8response4bodyAC10Foundation10URLRequestV_So17NSHTTPURLResponseCAG4DataVSgtcfc">init(request:<wbr>response:<wbr>body:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal</span> <span class="nf">init</span><span class="p">(</span>
+    <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span>
+    <span class="nv">response</span><span class="p">:</span> <span class="kt">HTTPURLResponse</span><span class="p">,</span>
+    <span class="nv">body</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Computeds"></a>
+                <a name="//apple_ref/swift/Section/Computeds" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Computeds"></a>
+                  <h3 class="section-name"><p>Computeds</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8NetStack15NetworkResponseV6statusAA10HTTPStatusVvp"></a>
+                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack15NetworkResponseV6statusAA10HTTPStatusVvp">status</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">status</span><span class="p">:</span> <span class="kt"><a href="../Structs/HTTPStatus.html">HTTPStatus</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -155,9 +238,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack10HTTPMethodV4postACvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/post" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack10HTTPMethodV4postACvpZ">post</a>
+                    <a name="/s:8NetStack15NetworkResponseV7messageSSvp"></a>
+                    <a name="//apple_ref/swift/Property/message" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack15NetworkResponseV7messageSSvp">message</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -172,7 +255,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">post</span><span class="p">:</span> <span class="kt">HTTPMethod</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -182,9 +265,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack10HTTPMethodV3putACvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/put" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack10HTTPMethodV3putACvpZ">put</a>
+                    <a name="/s:8NetStack15NetworkResponseV7headersSDys11AnyHashableVypGvp"></a>
+                    <a name="//apple_ref/swift/Property/headers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack15NetworkResponseV7headersSDys11AnyHashableVypGvp">headers</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -199,61 +282,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">put</span><span class="p">:</span> <span class="kt">HTTPMethod</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8NetStack10HTTPMethodV5patchACvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/patch" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack10HTTPMethodV5patchACvpZ">patch</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">patch</span><span class="p">:</span> <span class="kt">HTTPMethod</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8NetStack10HTTPMethodV6deleteACvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/delete" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack10HTTPMethodV6deleteACvpZ">delete</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">delete</span><span class="p">:</span> <span class="kt">HTTPMethod</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">AnyHashable</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>

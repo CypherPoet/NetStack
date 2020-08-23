@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>NetworkMethod Enumeration Reference</title>
+    <title>HTTPStatus Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,11 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/NetworkMethod" class="dashAnchor"></a>
-    <a title="NetworkMethod Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Struct/HTTPStatus" class="dashAnchor"></a>
+    <a title="HTTPStatus Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (12% documented)</p>
+        <p><a href="../index.html"> Docs</a> (22% documented)</p>
         <p class="header-right"><a href="https://github.com/CypherPoet/NetStack"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -22,35 +22,15 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        NetworkMethod Enumeration Reference
+        HTTPStatus Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Classes/SessionDataPublisher.html">SessionDataPublisher</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Enums/HTTPContentType.html">HTTPContentType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/HTTPHeaderField.html">HTTPHeaderField</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/NetStackError.html">NetStackError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/NetworkMethod.html">NetworkMethod</a>
-              </li>
               <li class="nav-group-task">
                 <a href="../Enums/RequestConfigurator.html">RequestConfigurator</a>
               </li>
@@ -77,15 +57,25 @@
                 <a href="../Structs/Endpoint.html">Endpoint</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/HTTPContentType.html">HTTPContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPHeaderField.html">HTTPHeaderField</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/HTTPMethod.html">HTTPMethod</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:8NetStack11HTTPHeadersa">HTTPHeaders</a>
+                <a href="../Structs/HTTPStatus.html">HTTPStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetStackError.html">NetStackError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetStackError/Code.html">– Code</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetworkResponse.html">NetworkResponse</a>
               </li>
             </ul>
           </li>
@@ -94,19 +84,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>NetworkMethod</h1>
+            <h1>HTTPStatus</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NetworkMethod</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HTTPStatus</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">HTTPStatus</span><span class="p">:</span> <span class="kt">Hashable</span></code></pre>
 
                 </div>
               </div>
-            <p>The type of HTTP method used to perform the request</p>
-
-<ul>
-<li>get: GET method</li>
-<li>post: POST method</li>
-</ul>
+            <p>Undocumented</p>
 
           </section>
           <section class="section task-group-section">
@@ -115,9 +101,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack13NetworkMethodO3getyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/get" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack13NetworkMethodO3getyA2CmF">get</a>
+                    <a name="/s:8NetStack10HTTPStatusV8rawValueSivp"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack10HTTPStatusV8rawValueSivp">rawValue</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -132,7 +118,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="k">get</span> <span class="o">=</span> <span class="s">"GET"</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -142,9 +128,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8NetStack13NetworkMethodO4postyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/post" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8NetStack13NetworkMethodO4postyA2CmF">post</a>
+                    <a name="/s:8NetStack10HTTPStatusV7createdACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/created" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8NetStack10HTTPStatusV7createdACvpZ">created</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -159,7 +145,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">post</span> <span class="o">=</span> <span class="s">"POST"</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">created</span><span class="p">:</span> <span class="kt">HTTPStatus</span></code></pre>
 
                         </div>
                       </div>
