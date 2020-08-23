@@ -3,7 +3,6 @@ import Combine
 
 
 public protocol TransportRequestPublishing: SessionDataTaskPublishing {
-
     var subscriptionQueue: DispatchQueue { get }
 
     /// Executes a data task for a request, then attempts to map data from the response.
@@ -16,8 +15,8 @@ public protocol TransportRequestPublishing: SessionDataTaskPublishing {
 
 // MARK: - Default Implementation
 extension TransportRequestPublishing {
-
     public var subscriptionQueue: DispatchQueue { .global() }
+
 
     public func perform(
         _ request: URLRequest,

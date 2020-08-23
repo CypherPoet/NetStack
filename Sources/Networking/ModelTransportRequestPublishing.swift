@@ -25,7 +25,7 @@ public protocol ModelTransportRequestPublishing: TransportRequestPublishing {
 
 
     func send<Model: Codable>(
-        encodedDataFor model: Model,
+        dataFor model: Model,
         inBodyOf request: URLRequest,
         encodingWith encoder: JSONEncoder,
         decodingWith decoder: JSONDecoder,
@@ -122,7 +122,7 @@ public extension ModelTransportRequestPublishing {
 
 
     func send<Model: Codable>(
-        encodedDataFor model: Model,
+        dataFor model: Model,
         inBodyOf request: URLRequest,
         encodingWith encoder: JSONEncoder = .init(),
         decodingWith decoder: JSONDecoder = .init(),

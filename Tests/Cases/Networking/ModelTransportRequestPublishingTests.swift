@@ -64,11 +64,15 @@ final class ModelTransportRequestPublishingTests: XCTestCase {
             break
         }
     }
+}
 
 
-    func test_encodeDataForModel() {
+// MARK: - Core Functionality
+extension ModelTransportRequestPublishingTests {
+
+    func test_encodeDataForModel_createsEncodedData() {
         let player = TestData.player
-        let dataEncoded = expectation(description: "Model data was encoded")
+        let dataWasEncoded = expectation(description: "Model data was encoded")
 
         sut.encode(dataFor: player)
             .sink(
@@ -81,7 +85,7 @@ final class ModelTransportRequestPublishingTests: XCTestCase {
                     }
                 },
                 receiveValue: { _ in
-                    dataEncoded.fulfill()
+                    dataWasEncoded.fulfill()
                 }
             )
             .store(in: &subscriptions)
@@ -90,23 +94,49 @@ final class ModelTransportRequestPublishingTests: XCTestCase {
     }
 
 
-    func test_sendEncodedDataForModelintoBodyOfRequest() {
+    func test_encodeDataForModelIntoBodyOfRequest_encodesDataAndSetsItOnARequestBody() {
+        let player = TestData.player
+        let requestWasConfigured = expectation(description: "Model data was encoded and set on request body")
+
+        let request = URLRequest(url: TestData.endpointURL)
+
+        sut.encode(dataFor: player, intoBodyOf: request)
+            .sink(
+                receiveCompletion: { completion in
+                    switch completion {
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
+                    case .finished:
+                        break
+                    }
+                },
+                receiveValue: { request in
+                    let body = try! XCTUnwrap(request.httpBody)
+
+                    XCTAssertFalse(body.isEmpty)
+                    requestWasConfigured.fulfill()
+                }
+            )
+            .store(in: &subscriptions)
+
+            waitForExpectations(timeout: 1.0)
+    }
+
+
+    func test_sendEncodedDataForModelInBodyOfRequest_encodesDataAndPerformsAPost() {
         let postSucceeded = expectation(description: "Post of data payload should succeed")
         let player = TestData.player
 
         var request = URLRequest(url: TestData.endpointURL)
 
         RequestConfigurator.configure(
-            headers: [
-                HTTPHeaderField.accept: HTTPContentType.json.rawValue,
-                HTTPHeaderField.contentType: HTTPContentType.json.rawValue,
-            ],
-            method: .post,
-            for: &request
+            &request,
+            withHeaders: RequestConfigurator.DefaultHeaders.postJSON,
+            method: .post
         )
 
         sut.send(
-            encodedDataFor: player,
+            dataFor: player,
             inBodyOf: request
         )
         .sink(
