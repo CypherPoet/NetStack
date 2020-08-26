@@ -8,7 +8,7 @@ public struct NetworkResponse {
 
 
     // MARK: - Init
-    internal init(
+    public init(
         request: URLRequest,
         response: HTTPURLResponse,
         body: Data?
