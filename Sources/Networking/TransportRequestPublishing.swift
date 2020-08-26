@@ -2,8 +2,10 @@ import Foundation
 import Combine
 
 
-public protocol TransportRequestPublishing: SessionDataTaskPublishing {
+public protocol TransportRequestPublishing {
     var subscriptionQueue: DispatchQueue { get }
+    var dataTasker: SessionDataTaskPublishing { get set }
+
 
     /// Executes a data task for a request, then attempts to map data from the response.
     func perform(
@@ -13,25 +15,29 @@ public protocol TransportRequestPublishing: SessionDataTaskPublishing {
 }
 
 
-// MARK: - Default Implementation
-extension TransportRequestPublishing {
-    public var subscriptionQueue: DispatchQueue { .global() }
+public class TransportRequestPublisher: TransportRequestPublishing {
+    public var subscriptionQueue: DispatchQueue
+    public var dataTasker: SessionDataTaskPublishing
+
+
+    init(
+        subscriptionQueue: DispatchQueue = .global(),
+        dataTasker: SessionDataTaskPublishing = URLSession.shared
+    ) {
+        self.subscriptionQueue = subscriptionQueue
+        self.dataTasker = dataTasker
+    }
 
 
     public func perform(
         _ request: URLRequest,
         maxRetries allowedRetries: Int = 0
     ) -> AnyPublisher<NetworkResponse, NetStackError> {
-        dataTaskPublisher(for: request)
+        dataTasker.dataTaskPublisher(for: request)
             .retry(allowedRetries)
             .subscribe(on: subscriptionQueue)
-            .mapError { error in
-                NetStackError(
-                    code: .requestFailedOnLaunch,
-                    request: request,
-                    response: nil,
-                    underlyingError: error
-                )
+            .mapError {
+                NetStackError.parse(from: $0, returnedFor: request)
             }
             .tryMap { (data: Data, response: URLResponse) in
                 guard let httpURLResponse = response as? HTTPURLResponse else {
@@ -50,7 +56,11 @@ extension TransportRequestPublishing {
                 ) {
                     throw parsedError
                 } else {
-                    return NetworkResponse(request: request, response: httpURLResponse, body: data)
+                    return NetworkResponse(
+                        request: request,
+                        response: httpURLResponse,
+                        body: data
+                    )
                 }
             }
             .mapError { error in
@@ -63,3 +73,4 @@ extension TransportRequestPublishing {
             .eraseToAnyPublisher()
     }
 }
+

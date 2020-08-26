@@ -7,5 +7,4 @@ struct Player {
     var level: Int
 }
 
-
 extension Player: Codable {}

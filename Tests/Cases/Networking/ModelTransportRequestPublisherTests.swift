@@ -3,49 +3,24 @@ import Combine
 @testable import NetStack
 
 
-private final class PlayerModelTransport: ModelTransportRequestPublishing {
-//    var subscriptionQueue: DispatchQueue
-//    var session: URLSession
-//
-//    init(
-//        session: URLSession = .shared
-//    ) {
-//        self.session = session
-//    }
-}
-
-private final class PlayerModelTransportWithInit: ModelTransportRequestPublishing {
-    var session: URLSession
-    var subscriptionQueue: DispatchQueue
-
-
-    internal init(
-        session: URLSession = .shared,
-        subscriptionQueue: DispatchQueue = .init(label: "Custom Subscription Queue", qos: .unspecified, attributes: [])
-    ) {
-        self.session = session
-        self.subscriptionQueue = subscriptionQueue
-    }
-}
-
-
 private enum TestData {
     static let player = Player(name: "Gandalf", xp: 100.32, level: 10)
-    static let playerEndpoint = Endpoint(host: "reqres.in", path: "/api/players")
-    static let endpointURL = playerEndpoint.url!
+    static let endpointURL = URL(string: "https://www.example.com")!
 }
 
 
-final class ModelTransportRequestPublishingTests: XCTestCase {
+final class ModelTransportRequestPublisherTests: XCTestCase {
     private var subscriptions = Set<AnyCancellable>()
 
-    private var sut: ModelTransportRequestPublishing!
+    private var sut: ModelTransportRequestPublisher!
 
 
     override func setUpWithError() throws {
         try super.setUpWithError()
 
-        sut = PlayerModelTransport()
+        sut = makeSUT(
+            requestPublisher: MockRequestPublisher()
+        )
     }
 
 
@@ -53,6 +28,18 @@ final class ModelTransportRequestPublishingTests: XCTestCase {
         sut = nil
 
         try super.tearDownWithError()
+    }
+
+
+    func makeSUT(
+        requestPublisher: TransportRequestPublishing
+    ) -> ModelTransportRequestPublisher {
+        .init(requestPublisher: requestPublisher)
+    }
+
+
+    func makeSUTFromDefaults() -> ModelTransportRequestPublisher {
+        .init()
     }
 
 
@@ -68,13 +55,14 @@ final class ModelTransportRequestPublishingTests: XCTestCase {
 
 
 // MARK: - Core Functionality
-extension ModelTransportRequestPublishingTests {
+extension ModelTransportRequestPublisherTests {
 
-    func test_encodeDataForModel_createsEncodedData() {
+    func test_EncodeDataForModel_CreatesEncodedData() {
         let player = TestData.player
         let dataWasEncoded = expectation(description: "Model data was encoded")
 
-        sut.encode(dataFor: player)
+        sut
+            .encode(dataFor: player)
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -90,17 +78,18 @@ extension ModelTransportRequestPublishingTests {
             )
             .store(in: &subscriptions)
 
-            waitForExpectations(timeout: 1.0)
+        waitForExpectations(timeout: 1.0)
     }
 
 
-    func test_encodeDataForModelIntoBodyOfRequest_encodesDataAndSetsItOnARequestBody() {
+    func test_EncodeDataForModelIntoBodyOfRequest_EncodesDataAndSetsItOnARequestBody() {
         let player = TestData.player
         let requestWasConfigured = expectation(description: "Model data was encoded and set on request body")
 
         let request = URLRequest(url: TestData.endpointURL)
 
-        sut.encode(dataFor: player, intoBodyOf: request)
+        sut
+            .encode(dataFor: player, intoBodyOf: request)
             .sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -119,13 +108,14 @@ extension ModelTransportRequestPublishingTests {
             )
             .store(in: &subscriptions)
 
-            waitForExpectations(timeout: 1.0)
+        waitForExpectations(timeout: 1.0)
     }
 
 
-    func test_sendEncodedDataForModelInBodyOfRequest_encodesDataAndPerformsAPost() {
-        let postSucceeded = expectation(description: "Post of data payload should succeed")
+    func test_SendEncodedDataForModelInBodyOfRequest_EncodesDataAndPerformsAPost() throws {
+        let postSucceeded = expectation(description: "Post of data payload should succeed.")
         let player = TestData.player
+        let playerResponseData = try JSONEncoder().encode(player)
 
         var request = URLRequest(url: TestData.endpointURL)
 
@@ -135,20 +125,26 @@ extension ModelTransportRequestPublishingTests {
             method: .post
         )
 
-        sut.send(
-            dataFor: player,
-            inBodyOf: request
+        let mockRequestPublisher = MockRequestPublisher(
+            responseData: playerResponseData,
+            responseStatus: HTTPStatus.created
         )
-        .sink(
-            receiveCompletion: handleCompletionWithNetStackError,
-            receiveValue: { savedPlayer in
-                XCTAssertEqual(savedPlayer.name, player.name)
-                postSucceeded.fulfill()
-            }
-        )
-        .store(in: &subscriptions)
+
+        sut = makeSUT(requestPublisher: mockRequestPublisher)
+        sut
+            .send(
+                dataFor: player,
+                inBodyOf: request
+            )
+            .sink(
+                receiveCompletion: handleCompletionWithNetStackError,
+                receiveValue: { savedPlayer in
+                    XCTAssertEqual(savedPlayer.name, player.name)
+                    postSucceeded.fulfill()
+                }
+            )
+            .store(in: &subscriptions)
 
         waitForExpectations(timeout: 1.0)
     }
 }
-
