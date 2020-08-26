@@ -1,12 +1,10 @@
+import Foundation
+
+
 extension NetStackError {
 
     public enum Code: Int {
-
-        /// the `URLRequest` did not contain a `URL`.
-        case missingURL
-
-        /// the `URLRequest` did not contain a download `URL`.
-        case missingDownloadURL
+        case badURL
 
         /// Some sort of network connectivity problem
         case cannotConnect
@@ -27,7 +25,7 @@ extension NetStackError {
         case invalidResponse
 
         /// The request failed upon being fired.
-        case requestFailedOnLaunch
+        case unknownFailureOnLaunch
 
         /// The server determined that this request lacks proper authorization credentials.
         case unauthorizedRequest
@@ -60,5 +58,57 @@ extension NetStackError {
         /// The problem can't be determined... or at least it's not
         /// something `NetStack` is prepared to handle.
         case unknown
+    }
+}
+
+
+// MARK: - Init from `HTTPURLResponse`
+extension NetStackError.Code {
+
+    init?(httpURLResponse: HTTPURLResponse) {
+        switch httpURLResponse.statusCode {
+        case 200 ..< 300:
+            return nil
+        case 400:
+            self = .badRequest
+        case 401:
+            self = .unauthorizedRequest
+        case 402:
+            self = .paymentRequired
+        case 404:
+            self = .notFound
+        case 429:
+            self = .tooManyRequests
+        case 503:
+            self = .serverIsBusy
+        case 500 ..< 600:
+            self = .severSideFailure
+        default:
+            self = .unknown
+        }
+    }
+}
+
+
+
+// MARK: - Init from `URLError`
+extension NetStackError.Code {
+
+    /// Attempts to construct a `NetStackError` from
+    /// a [`URLError`](https://developer.apple.com/documentation/foundation/urlerror).
+    ///
+    /// This can be useful for determining why request failed upon being launched -- before
+    /// any other significant response data could be returned.
+    init?(urlError: URLError) {
+        switch urlError.code {
+        case .badURL:
+            self = .badURL
+        case .unsupportedURL:
+            self = .badURL
+        case .cannotConnectToHost:
+            self = .cannotConnect
+        default:
+            return nil
+        }
     }
 }

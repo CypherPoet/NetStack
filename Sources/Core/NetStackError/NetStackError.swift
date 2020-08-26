@@ -22,31 +22,3 @@ extension NetStackError: Error {}
 extension NetStackError: Identifiable {
     public var id: Int { code.rawValue }
 }
-
-
-// MARK: - Init from `HTTPURLResponse`
-extension NetStackError.Code {
-
-    init?(httpURLResponse: HTTPURLResponse) {
-        switch httpURLResponse.statusCode {
-        case 200 ..< 300:
-            return nil
-        case 400:
-            self = .badRequest
-        case 401:
-            self = .unauthorizedRequest
-        case 402:
-            self = .paymentRequired
-        case 404:
-            self = .notFound
-        case 429:
-            self = .tooManyRequests
-        case 503:
-            self = .serverIsBusy
-        case 500 ..< 600:
-            self = .severSideFailure
-        default:
-            self = .unknown
-        }
-    }
-}
