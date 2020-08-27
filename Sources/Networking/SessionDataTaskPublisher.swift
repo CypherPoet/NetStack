@@ -1,9 +1,10 @@
 import Foundation
+import Combine
 
 
 public protocol SessionDataTaskPublishing: class {
-    func dataTaskPublisher(for request: URLRequest) -> URLSession.DataTaskPublisher
+    typealias DataTaskResponse = URLSession.DataTaskPublisher.Output
+    typealias DataTaskFailure = URLSession.DataTaskPublisher.Failure
+
+    func response(for request: URLRequest) -> AnyPublisher<DataTaskResponse, DataTaskFailure>
 }
-
-
-extension URLSession: SessionDataTaskPublishing {}

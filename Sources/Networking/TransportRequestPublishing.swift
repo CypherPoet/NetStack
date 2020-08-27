@@ -33,7 +33,7 @@ public class TransportRequestPublisher: TransportRequestPublishing {
         _ request: URLRequest,
         maxRetries allowedRetries: Int = 0
     ) -> AnyPublisher<NetworkResponse, NetStackError> {
-        dataTasker.dataTaskPublisher(for: request)
+        dataTasker.response(for: request)
             .retry(allowedRetries)
             .subscribe(on: subscriptionQueue)
             .mapError {

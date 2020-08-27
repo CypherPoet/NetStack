@@ -4,16 +4,35 @@ import Combine
 
 
 
-final class MockDataTasker: SessionDataTaskPublishing {
-    var session: URLSession
+final class MockDataTasker {
+    var responseData: Data
+    var responseStatus: HTTPStatus
 
-
-    init(session: URLSession = URLSession(configuration: .default)) {
-        self.session = session
+    init(
+        responseData: Data = Data(),
+        responseStatus: HTTPStatus = .ok
+    ) {
+        self.responseData = responseData
+        self.responseStatus = responseStatus
     }
+}
 
 
-    func dataTaskPublisher(for request: URLRequest) -> URLSession.DataTaskPublisher {
-        URLSession.DataTaskPublisher(request: request, session: session)
+extension MockDataTasker: SessionDataTaskPublishing {
+
+    func response(for request: URLRequest) -> AnyPublisher<DataTaskResponse, DataTaskFailure> {
+        let response = HTTPURLResponse(
+            url: request.url!,
+            statusCode: responseStatus.rawValue,
+            httpVersion: String(kCFHTTPVersion1_1),
+            headerFields: [String : String]()
+        )!
+
+        let data = responseData
+
+
+        return Just((data: data, response: response))
+            .setFailureType(to: DataTaskFailure.self)
+            .eraseToAnyPublisher()
     }
 }

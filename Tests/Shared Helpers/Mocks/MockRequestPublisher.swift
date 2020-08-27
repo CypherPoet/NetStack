@@ -8,7 +8,6 @@ final class MockRequestPublisher: TransportRequestPublishing {
     var dataTasker: SessionDataTaskPublishing
     var responseData: Data?
     var responseStatus: HTTPStatus
-
     var error: NetStackError?
 
 
