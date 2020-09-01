@@ -41,7 +41,7 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
     public var requestPublisher: TransportRequestPublishing
 
     
-    init(
+    public init(
         requestPublisher: TransportRequestPublishing = TransportRequestPublisher()
     ) {
         self.requestPublisher = requestPublisher

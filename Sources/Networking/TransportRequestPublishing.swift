@@ -20,7 +20,7 @@ public class TransportRequestPublisher: TransportRequestPublishing {
     public var dataTasker: SessionDataTaskPublishing
 
 
-    init(
+    public init(
         subscriptionQueue: DispatchQueue = .global(),
         dataTasker: SessionDataTaskPublishing = URLSession.shared
     ) {
