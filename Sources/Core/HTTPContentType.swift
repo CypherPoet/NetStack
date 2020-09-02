@@ -3,6 +3,11 @@ import Foundation
 
 public struct HTTPContentType {
     public let rawValue: String
+
+    // MARK: - Init
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
 }
 
 extension HTTPContentType: Hashable {}

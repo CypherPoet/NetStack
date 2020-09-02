@@ -2,7 +2,13 @@ import Foundation
 
 
 public struct HTTPStatus {
+
     public let rawValue: Int
+
+    // MARK: - Init
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
 }
 
 extension HTTPStatus: Hashable {}
