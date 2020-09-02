@@ -4,13 +4,9 @@ import Combine
 
 public protocol ModelTransportRequestPublishing {
 
-    var requestPublisher: TransportRequestPublishing { get set }
-
-
     func perform<Model: Decodable>(
         _ request: URLRequest,
-        decodingWith decoder: JSONDecoder,
-        maxRetries allowedRetries: Int
+        decodingWith decoder: JSONDecoder
     ) -> AnyPublisher<Model, NetStackError>
 
 
@@ -31,8 +27,7 @@ public protocol ModelTransportRequestPublishing {
         dataFor model: Model,
         inBodyOf request: URLRequest,
         encodingWith encoder: JSONEncoder,
-        decodingWith decoder: JSONDecoder,
-        maxRetries allowedRetries: Int
+        decodingWith decoder: JSONDecoder
     ) -> AnyPublisher<Model, NetStackError>
 }
 
@@ -50,14 +45,10 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
 
     public func perform<Model: Decodable>(
         _ request: URLRequest,
-        decodingWith decoder: JSONDecoder = .init(),
-        maxRetries allowedRetries: Int = 0
+        decodingWith decoder: JSONDecoder = .init()
     ) -> AnyPublisher<Model, NetStackError> {
         requestPublisher
-            .perform(
-                request,
-                maxRetries: allowedRetries
-            )
+            .perform(request)
             .flatMap { networkResponse in
                 return Just(networkResponse)
                     .map(\.body)
@@ -136,8 +127,7 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
         dataFor model: Model,
         inBodyOf request: URLRequest,
         encodingWith encoder: JSONEncoder = .init(),
-        decodingWith decoder: JSONDecoder = .init(),
-        maxRetries allowedRetries: Int = 0
+        decodingWith decoder: JSONDecoder = .init()
     ) -> AnyPublisher<Model, NetStackError> {
         encode(dataFor: model, intoBodyOf: request)
             .flatMap { [weak self] request -> AnyPublisher<Model, NetStackError> in
@@ -153,7 +143,7 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
                     .eraseToAnyPublisher()
                 }
 
-                return self.perform(request, decodingWith: decoder, maxRetries: allowedRetries)
+                return self.perform(request, decodingWith: decoder)
             }
             .eraseToAnyPublisher()
     }

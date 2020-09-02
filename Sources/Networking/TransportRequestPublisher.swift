@@ -3,15 +3,7 @@ import Combine
 
 
 public protocol TransportRequestPublishing {
-    var subscriptionQueue: DispatchQueue { get }
-    var dataTasker: SessionDataTaskPublishing { get set }
-
-
-    /// Executes a data task for a request, then attempts to map data from the response.
-    func perform(
-        _ request: URLRequest,
-        maxRetries allowedRetries: Int
-    ) -> AnyPublisher<NetworkResponse, NetStackError>
+    func perform(_ request: URLRequest) -> AnyPublisher<NetworkResponse, NetStackError>
 }
 
 
@@ -29,12 +21,10 @@ public class TransportRequestPublisher: TransportRequestPublishing {
     }
 
 
-    public func perform(
-        _ request: URLRequest,
-        maxRetries allowedRetries: Int = 0
-    ) -> AnyPublisher<NetworkResponse, NetStackError> {
+    /// Executes a data task for a request, then attempts to map data from
+    /// the `DataTaskResponse` into a `NetworkResponse` response.
+    public func perform(_ request: URLRequest) -> AnyPublisher<NetworkResponse, NetStackError> {
         dataTasker.response(for: request)
-            .retry(allowedRetries)
             .subscribe(on: subscriptionQueue)
             .mapError {
                 NetStackError.parse(from: $0, returnedFor: request)
