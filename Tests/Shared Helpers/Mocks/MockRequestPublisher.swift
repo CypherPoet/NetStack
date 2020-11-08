@@ -30,8 +30,7 @@ final class MockRequestPublisher: TransportRequestPublishing {
 
 
     func perform(
-        _ request: URLRequest,
-        maxRetries allowedRetries: Int
+        _ request: URLRequest
     ) -> AnyPublisher<NetworkResponse, NetStackError> {
         if let error = error {
             return Fail(error: error).eraseToAnyPublisher()
