@@ -50,7 +50,7 @@ extension TransportRequestPublisherTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__TransportRequestPublisherTests = [
-        ("test_Perform_GivenFailingGETForData_PublishesCompletionWithNetStackError", test_Perform_GivenFailingGETForData_PublishesCompletionWithNetStackError),
+        ("test_Perform_GivenFailingGETForData_PublishesCompletionWithNetworkError", test_Perform_GivenFailingGETForData_PublishesCompletionWithNetworkError),
         ("test_Perform_GivenSuccess_PublishesNetworkResponse", test_Perform_GivenSuccess_PublishesNetworkResponse),
         ("test_Perform_GivenSuccessfulGETForData_PublishesNetworkResponseWithDataInBody", test_Perform_GivenSuccessfulGETForData_PublishesNetworkResponseWithDataInBody),
         ("test_WhenCreated_WithDataTasker_SetsDataTasker", test_WhenCreated_WithDataTasker_SetsDataTasker),

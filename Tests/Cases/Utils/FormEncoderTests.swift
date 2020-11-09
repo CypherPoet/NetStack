@@ -21,7 +21,7 @@ final class FormEncoderTests: XCTestCase {
 // MARK: - Computed Properties
 extension FormEncoderTests {
 
-    func testFormEncoder_encode_withAlphaNumericKeysAndValues_createsDataFromEncodedStringThatAllowsAlphanumerics() throws {
+    func test_Encode_WithAlphaNumericKeysAndValues_CreatesDataFromEncodedStringThatAllowsAlphanumerics() throws {
         let formItems = [
             "name": "CypherPoet",
         ]
@@ -33,7 +33,7 @@ extension FormEncoderTests {
     }
 
 
-    func testFormEncoder_encode_withEmojiValue_createsDataFromEncodedStringThatEscapesEmoji() throws {
+    func test_Encode_WithEmojiValue_CreatesDataFromEncodedStringThatEscapesEmoji() throws {
         let formItems = [
             "name": "🦄",
         ]
@@ -45,7 +45,7 @@ extension FormEncoderTests {
     }
 
 
-    func testFormEncoder_encode_withEmptyValues_createsDataFromEncodedEmptyValueString() throws {
+    func test_Encode_WithEmptyValues_CreatesDataFromEncodedEmptyValueString() throws {
         let formItems = [
             "name": "",
         ]
@@ -57,7 +57,7 @@ extension FormEncoderTests {
     }
 
 
-    func testFormEncoder_encode_withEmptyDictionary_createsDataFromEncodedEmptyString() throws {
+    func test_Encode_WithEmptyDictionary_CreatesDataFromEncodedEmptyString() throws {
         let formItems = [String: String]()
 
         let expected = Data("".utf8)
