@@ -7,7 +7,7 @@ public protocol ModelTransportRequestPublishing {
     func perform<Model: Decodable>(
         _ request: URLRequest,
         decodingWith decoder: JSONDecoder
-    ) -> AnyPublisher<Model, NetStackError>
+    ) -> AnyPublisher<Model, NetworkError>
 
 
     func encode<Model: Encodable>(
@@ -20,7 +20,7 @@ public protocol ModelTransportRequestPublishing {
         dataFor model: Model,
         intoBodyOf request: URLRequest,
         using encoder: JSONEncoder
-    ) -> AnyPublisher<URLRequest, NetStackError>
+    ) -> AnyPublisher<URLRequest, NetworkError>
 
 
     func send<Model: Codable>(
@@ -28,7 +28,7 @@ public protocol ModelTransportRequestPublishing {
         inBodyOf request: URLRequest,
         encodingWith encoder: JSONEncoder,
         decodingWith decoder: JSONDecoder
-    ) -> AnyPublisher<Model, NetStackError>
+    ) -> AnyPublisher<Model, NetworkError>
 }
 
 
@@ -46,7 +46,7 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
     public func perform<Model: Decodable>(
         _ request: URLRequest,
         decodingWith decoder: JSONDecoder = .init()
-    ) -> AnyPublisher<Model, NetStackError> {
+    ) -> AnyPublisher<Model, NetworkError> {
         requestPublisher
             .perform(request)
             .flatMap { networkResponse in
@@ -57,16 +57,16 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
                     .mapError { error in
                         switch error {
                         case (let error as DecodingError):
-                            return NetStackError(
+                            return NetworkError(
                                 code: .dataDecodingFailed,
                                 request: request,
                                 response: networkResponse,
                                 underlyingError: error
                             )
-                        case (let error as NetStackError):
+                        case (let error as NetworkError):
                             return error
                         default:
-                            return NetStackError(
+                            return NetworkError(
                                 code: .unknown,
                                 request: request,
                                 response: networkResponse,
@@ -93,19 +93,19 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
         dataFor model: Model,
         intoBodyOf request: URLRequest,
         using encoder: JSONEncoder = .init()
-    ) -> AnyPublisher<URLRequest, NetStackError> {
+    ) -> AnyPublisher<URLRequest, NetworkError> {
         encode(dataFor: model, using: encoder)
             .mapError { error in
                 switch error {
                 case (let error as EncodingError):
-                    return NetStackError(
+                    return NetworkError(
                         code: .dataEncodingFailed,
                         request: request,
                         response: nil,
                         underlyingError: error
                     )
                 default:
-                    return NetStackError(
+                    return NetworkError(
                         code: .unknown,
                         request: request,
                         response: nil,
@@ -128,12 +128,12 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
         inBodyOf request: URLRequest,
         encodingWith encoder: JSONEncoder = .init(),
         decodingWith decoder: JSONDecoder = .init()
-    ) -> AnyPublisher<Model, NetStackError> {
+    ) -> AnyPublisher<Model, NetworkError> {
         encode(dataFor: model, intoBodyOf: request)
-            .flatMap { [weak self] request -> AnyPublisher<Model, NetStackError> in
+            .flatMap { [weak self] request -> AnyPublisher<Model, NetworkError> in
                 guard let self = self else {
                     return Fail(
-                        error: NetStackError(
+                        error: NetworkError(
                             code: .cancelled,
                             request: request,
                             response: nil,

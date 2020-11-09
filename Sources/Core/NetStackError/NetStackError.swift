@@ -1,7 +1,7 @@
 import Foundation
 
 
-public struct NetStackError {
+public struct NetworkError {
 
     /// The high-level classification of this error.
     public let code: Code
@@ -17,7 +17,7 @@ public struct NetStackError {
 
 
     public init(
-        code: NetStackError.Code,
+        code: NetworkError.Code,
         request: URLRequest,
         response: NetworkResponse? = nil,
         underlyingError: Error? = nil
@@ -29,10 +29,10 @@ public struct NetStackError {
     }
 }
 
-extension NetStackError: Error {}
+extension NetworkError: Error {}
 
 
 // MARK: - Identifiable
-extension NetStackError: Identifiable {
+extension NetworkError: Identifiable {
     public var id: Int { code.rawValue }
 }

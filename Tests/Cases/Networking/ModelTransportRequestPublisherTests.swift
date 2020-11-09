@@ -43,7 +43,7 @@ final class ModelTransportRequestPublisherTests: XCTestCase {
     }
 
 
-    func handleCompletionWithNetStackError(completion: Subscribers.Completion<NetStackError>) {
+    func handleCompletionWithNetworkError(completion: Subscribers.Completion<NetworkError>) {
         switch completion {
         case .failure(let error):
             XCTFail(error.localizedDescription)
@@ -137,7 +137,7 @@ extension ModelTransportRequestPublisherTests {
                 inBodyOf: request
             )
             .sink(
-                receiveCompletion: handleCompletionWithNetStackError,
+                receiveCompletion: handleCompletionWithNetworkError,
                 receiveValue: { savedPlayer in
                     XCTAssertEqual(savedPlayer.name, player.name)
                     postSucceeded.fulfill()

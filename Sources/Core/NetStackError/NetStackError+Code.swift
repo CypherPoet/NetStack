@@ -1,7 +1,7 @@
 import Foundation
 
 
-extension NetStackError {
+extension NetworkError {
 
     public enum Code: Int {
         case badURL
@@ -63,7 +63,7 @@ extension NetStackError {
 
 
 // MARK: - Init from `HTTPURLResponse`
-extension NetStackError.Code {
+extension NetworkError.Code {
 
     init?(httpURLResponse: HTTPURLResponse) {
         switch httpURLResponse.statusCode {
@@ -92,9 +92,9 @@ extension NetStackError.Code {
 
 
 // MARK: - Init from `URLError`
-extension NetStackError.Code {
+extension NetworkError.Code {
 
-    /// Attempts to construct a `NetStackError` from
+    /// Attempts to construct a `NetworkError` from
     /// a [`URLError`](https://developer.apple.com/documentation/foundation/urlerror).
     ///
     /// This can be useful for determining why request failed upon being launched -- before

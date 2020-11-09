@@ -46,7 +46,7 @@ final class TransportRequestPublisherTests: XCTestCase {
     }
 
 
-    func failOnCompletionWithNetStackError(completion: Subscribers.Completion<NetStackError>) {
+    func failOnCompletionWithNetworkError(completion: Subscribers.Completion<NetworkError>) {
         switch completion {
         case .failure(let error):
             XCTFail(error.localizedDescription)
@@ -107,7 +107,7 @@ extension TransportRequestPublisherTests {
         sut
             .perform(request)
             .sink(
-                receiveCompletion: failOnCompletionWithNetStackError,
+                receiveCompletion: failOnCompletionWithNetworkError,
                 receiveValue: { response in
                     receivedResponse.fulfill()
                 }
@@ -130,7 +130,7 @@ extension TransportRequestPublisherTests {
         sut
             .perform(request)
             .sink(
-                receiveCompletion: failOnCompletionWithNetStackError,
+                receiveCompletion: failOnCompletionWithNetworkError,
                 receiveValue: { response in
                     XCTAssertNotNil(response.body)
                     receivedResponse.fulfill()
@@ -146,7 +146,7 @@ extension TransportRequestPublisherTests {
 // MARK: - Error Handling
 extension TransportRequestPublisherTests {
 
-    func test_Perform_GivenFailingGETForData_PublishesCompletionWithNetStackError() throws {
+    func test_Perform_GivenFailingGETForData_PublishesCompletionWithNetworkError() throws {
         let request = URLRequest(url: TestData.endpointURL)
         let receivedCompletionWithError = expectation(description: "Received completion with error after performing request.")
 

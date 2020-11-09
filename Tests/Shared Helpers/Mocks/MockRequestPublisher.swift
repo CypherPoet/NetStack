@@ -8,7 +8,7 @@ final class MockRequestPublisher: TransportRequestPublishing {
     var dataTasker: SessionDataTaskPublishing
     var responseData: Data?
     var responseStatus: HTTPStatus
-    var error: NetStackError?
+    var error: NetworkError?
 
 
     init(
@@ -19,7 +19,7 @@ final class MockRequestPublisher: TransportRequestPublishing {
         dataTasker: SessionDataTaskPublishing = URLSession.shared,
         responseData: Data? = nil,
         responseStatus: HTTPStatus = .ok,
-        responseError: NetStackError? = nil
+        responseError: NetworkError? = nil
     ) {
         self.subscriptionQueue = subscriptionQueue
         self.dataTasker = dataTasker
@@ -31,14 +31,14 @@ final class MockRequestPublisher: TransportRequestPublishing {
 
     func perform(
         _ request: URLRequest
-    ) -> AnyPublisher<NetworkResponse, NetStackError> {
+    ) -> AnyPublisher<NetworkResponse, NetworkError> {
         if let error = error {
             return Fail(error: error).eraseToAnyPublisher()
         } else {
             let response = makeResponse(for: request)
 
             return Just(response)
-                .setFailureType(to: NetStackError.self)
+                .setFailureType(to: NetworkError.self)
                 .eraseToAnyPublisher()
         }
     }

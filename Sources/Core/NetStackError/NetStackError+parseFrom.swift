@@ -1,14 +1,14 @@
 import Foundation
 
 
-extension NetStackError {
+extension NetworkError {
     
     public static func parse(
         from data: Data,
         and httpURLResponse: HTTPURLResponse,
         returnedFor request: URLRequest
-    ) -> NetStackError?  {
-        guard let errorCode = NetStackError.Code(httpURLResponse: httpURLResponse) else {
+    ) -> NetworkError?  {
+        guard let errorCode = NetworkError.Code(httpURLResponse: httpURLResponse) else {
             return nil
         }
 
@@ -26,10 +26,10 @@ extension NetStackError {
     public static func parse(
         from urlError: URLError,
         returnedFor request: URLRequest
-    ) -> NetStackError {
+    ) -> NetworkError {
 
-        guard let code = NetStackError.Code(urlError: urlError) else {
-            return NetStackError(
+        guard let code = NetworkError.Code(urlError: urlError) else {
+            return NetworkError(
                 code: .unknownFailureOnLaunch,
                 request: request,
                 response: nil,
