@@ -33,7 +33,11 @@ let package = Package(
         .testTarget(
             name: "NetStackTests",
             dependencies: ["NetStack"],
-            path: "Tests/"
+            path: "Tests/",
+            resources: [
+                .process("./Data/headline.txt"),
+                .process("./Data/weather-data.json"),
+            ]
         ),
     ]
 )

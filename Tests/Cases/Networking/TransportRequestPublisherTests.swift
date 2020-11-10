@@ -3,14 +3,15 @@ import Combine
 @testable import NetStack
 
 
-private enum TestData {
-    static let customSubscriptionQueue = DispatchQueue(label: "Custom Queue")
-    static let endpointURL = URL(string: "https://www.example.com")!
-    static let mockDataTasker = MockDataTasker()
-}
-
-
 final class TransportRequestPublisherTests: XCTestCase {
+    
+    private enum TestData {
+        static let customSubscriptionQueue = DispatchQueue(label: "Custom Queue")
+        static let endpointURL = URL(string: "https://www.example.com")!
+        static let mockDataTasker = MockDataTasker()
+    }
+
+    
     private var subscriptions = Set<AnyCancellable>()
 
     private var sut: TransportRequestPublisher!
@@ -100,7 +101,7 @@ extension TransportRequestPublisherTests {
 // MARK: - Performing Successful Requests
 extension TransportRequestPublisherTests {
 
-    func test_Perform_GivenSuccess_PublishesNetworkResponse() {
+    func test_PerformGETRequest_WhenSuccessful_PublishesNetworkResponse() {
         let request = URLRequest(url: TestData.endpointURL)
         let receivedResponse = expectation(description: "Received response after performing a successful request.")
 
@@ -118,7 +119,7 @@ extension TransportRequestPublisherTests {
     }
 
 
-    func test_Perform_GivenSuccessfulGETForData_PublishesNetworkResponseWithDataInBody() throws {
+    func test_PerformGETRequest_WhenSuccessful_PublishesNetworkResponseWithDataInBody() throws {
         let request = URLRequest(url: TestData.endpointURL)
         let receivedResponse = expectation(description: "Received response after performing a successful request")
 
@@ -146,7 +147,7 @@ extension TransportRequestPublisherTests {
 // MARK: - Error Handling
 extension TransportRequestPublisherTests {
 
-    func test_Perform_GivenFailingGETForData_PublishesCompletionWithNetworkError() throws {
+    func test_PerformGETRequest_WhenFailed_PublishesCompletionWithNetworkError() throws {
         let request = URLRequest(url: TestData.endpointURL)
         let receivedCompletionWithError = expectation(description: "Received completion with error after performing request.")
 

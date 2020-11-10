@@ -3,7 +3,7 @@ import Combine
 
 
 public protocol FileRequestPublishing {
-    func perform(_ request: URLRequest) -> AnyPublisher<FileResponse, NetworkError>
+    func perform(_ request: URLRequest) -> AnyPublisher<FileResponse, FileLoadingError>
 }
 
 
@@ -22,35 +22,20 @@ public class FileRequestPublisher: FileRequestPublishing {
     
     
     /// Executes a data task for a request, then attempts to map data from
-    /// the `DataTaskResponse` into a `NetworkResponse` response.
-    public func perform(_ request: URLRequest) -> AnyPublisher<FileResponse, NetworkError> {
+    /// the `DataTaskResponse` into a `FileResponse` response.
+    public func perform(_ request: URLRequest) -> AnyPublisher<FileResponse, FileLoadingError> {
         dataTasker.response(for: request)
             .subscribe(on: subscriptionQueue)
-            .mapError {
-                NetworkError.parse(from: $0, returnedFor: request)
+            .mapError { urlError in
+                FileLoadingError.parse(from: urlError, returnedFor: request)
             }
-            .tryMap { (data: Data, response: URLResponse) in
-                return FileResponse(
+            .map { (data: Data, response: URLResponse) in
+                FileResponse(
                     request: request,
                     response: response,
                     body: data
                 )
             }
-            // TODO: Create and use a `FileError` here
-            .mapError { error in
-                if let network = error as? NetworkError {
-                    return network
-                } else {
-                    return NetworkError(
-                        code: .unknown,
-                        request: request,
-                        response: nil,
-                        underlyingError: error
-                    )
-                }
-            }
             .eraseToAnyPublisher()
     }
 }
-
-

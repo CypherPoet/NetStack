@@ -46,7 +46,7 @@ final class NetworkResponseTests: XCTestCase {
 // MARK: - Computed Properties
 extension NetworkResponseTests {
 
-    func testNetworkResponse_status_usesResponseStatusCode() throws {
+    func test_Status_UsesResponseStatusCode() throws {
         sut = makeSUT(response: TestData.Responses.creationSuccess)
 
         let expected = TestData.Responses.creationSuccess.statusCode
@@ -56,12 +56,23 @@ extension NetworkResponseTests {
     }
 
 
-    func testNetworkResponse_message_usesLocalizedStringForStatusCode() throws {
+    func test_Message_UsesLocalizedStringForStatusCode() throws {
         let response = TestData.Responses.creationSuccess
         sut = makeSUT(response: response)
 
         let expected = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
         let actual = sut.message
+
+        XCTAssertEqual(actual, expected)
+    }
+    
+    
+    func test_Header_UsesAllHeaderFieldsOnResponse() throws {
+        let response = TestData.Responses.creationSuccess
+        sut = makeSUT(response: response)
+
+        let expected = TestData.Responses.creationSuccess.allHeaderFields as! [String: String]
+        let actual = sut.headers as! [String: String]
 
         XCTAssertEqual(actual, expected)
     }

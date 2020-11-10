@@ -26,17 +26,18 @@ public class TransportRequestPublisher: TransportRequestPublishing {
     public func perform(_ request: URLRequest) -> AnyPublisher<NetworkResponse, NetworkError> {
         dataTasker.response(for: request)
             .subscribe(on: subscriptionQueue)
-            .mapError {
-                NetworkError.parse(from: $0, returnedFor: request)
+            .mapError { urlError in
+                NetworkError.parse(from: urlError, returnedFor: request)
             }
-            .tryMap { (data: Data, response: URLResponse) in
+            .flatMap { (data: Data, response: URLResponse) -> AnyPublisher<NetworkResponse, NetworkError> in
                 guard let httpURLResponse = response as? HTTPURLResponse else {
-                    throw NetworkError(
+                    return Fail(error: NetworkError(
                         code: .invalidResponse,
                         request: request,
                         response: nil,
                         underlyingError: nil
-                    )
+                    ))
+                    .eraseToAnyPublisher()
                 }
 
                 if let parsedError = NetworkError.parse(
@@ -44,20 +45,16 @@ public class TransportRequestPublisher: TransportRequestPublishing {
                     and: httpURLResponse,
                     returnedFor: request
                 ) {
-                    throw parsedError
+                    return Fail(error: parsedError)
+                        .eraseToAnyPublisher()
                 } else {
-                    return NetworkResponse(
+                    return Just(NetworkResponse(
                         request: request,
                         response: httpURLResponse,
                         body: data
-                    )
-                }
-            }
-            .mapError { error in
-                if let netStackError = error as? NetworkError {
-                    return netStackError
-                } else {
-                    return NetworkError(code: .unknown, request: request, response: nil, underlyingError: error)
+                    ))
+                    .setFailureType(to: NetworkError.self)
+                    .eraseToAnyPublisher()
                 }
             }
             .eraseToAnyPublisher()

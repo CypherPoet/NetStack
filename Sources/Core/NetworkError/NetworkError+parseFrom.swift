@@ -12,7 +12,11 @@ extension NetworkError {
             return nil
         }
 
-        let networkResponse = NetworkResponse(request: request, response: httpURLResponse, body: data)
+        let networkResponse = NetworkResponse(
+            request: request,
+            response: httpURLResponse,
+            body: data
+        )
 
         return .init(
             code: errorCode,
@@ -27,18 +31,8 @@ extension NetworkError {
         from urlError: URLError,
         returnedFor request: URLRequest
     ) -> NetworkError {
-
-        guard let code = NetworkError.Code(urlError: urlError) else {
-            return NetworkError(
-                code: .unknownFailureOnLaunch,
-                request: request,
-                response: nil,
-                underlyingError: urlError
-            )
-        }
-
-        return .init(
-            code: code,
+        .init(
+            code: NetworkError.Code(urlError: urlError),
             request: request,
             response: nil,
             underlyingError: urlError

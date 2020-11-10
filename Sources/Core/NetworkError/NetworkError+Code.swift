@@ -4,6 +4,9 @@ import Foundation
 extension NetworkError {
 
     public enum Code: Int {
+        
+        /// A malformed URL prevented a URL request from being initiated.
+        /// [Docs](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes/nsurlerrorbadurl)
         case badURL
 
         /// Some sort of network connectivity problem
@@ -99,7 +102,7 @@ extension NetworkError.Code {
     ///
     /// This can be useful for determining why request failed upon being launched -- before
     /// any other significant response data could be returned.
-    init?(urlError: URLError) {
+    init(urlError: URLError) {
         switch urlError.code {
         case .badURL:
             self = .badURL
@@ -108,7 +111,7 @@ extension NetworkError.Code {
         case .cannotConnectToHost:
             self = .cannotConnect
         default:
-            return nil
+            self = .unknown
         }
     }
 }

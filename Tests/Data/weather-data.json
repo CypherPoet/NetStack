@@ -1,0 +1,28 @@
+{
+  "lat": 41.85,
+  "lon": -87.65,
+  "timezone": "America/Chicago",
+  "current": {
+    "dt": 1587403041,
+    "sunrise": 1587380493,
+    "sunset": 1587429409,
+    "temp": 287.62,
+    "feels_like": 280.1,
+    "pressure": 1007,
+    "humidity": 28,
+    "dew_point": 269.78,
+    "uvi": 6.04,
+    "clouds": 20,
+    "visibility": 16093,
+    "wind_speed": 7.2,
+    "wind_deg": 250,
+    "weather": [
+      {
+        "id": 801,
+        "main": "Clouds",
+        "description": "few clouds",
+        "icon": "02d"
+      }
+    ]
+  }
+}
