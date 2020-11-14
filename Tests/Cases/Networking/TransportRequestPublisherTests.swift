@@ -6,7 +6,6 @@ import Combine
 final class TransportRequestPublisherTests: XCTestCase {
     
     private enum TestData {
-        static let customSubscriptionQueue = DispatchQueue(label: "Custom Queue")
         static let endpointURL = URL(string: "https://www.example.com")!
         static let mockDataTasker = MockDataTasker()
     }
@@ -32,7 +31,7 @@ final class TransportRequestPublisherTests: XCTestCase {
 
 
     func makeSUT(
-        subscriptionQueue: DispatchQueue = TestData.customSubscriptionQueue,
+        subscriptionQueue: DispatchQueue = TestConstants.customSubscriptionQueue,
         dataTasker: SessionDataTaskPublishing = TestData.mockDataTasker
     ) -> TransportRequestPublisher {
         TransportRequestPublisher(
@@ -82,7 +81,7 @@ extension TransportRequestPublisherTests {
 
 
     func test_WhenCreated_WithSubscriptionQueue_SetsSubscriptionQueue() {
-        let expected = TestData.customSubscriptionQueue
+        let expected = TestConstants.customSubscriptionQueue
         let actual = sut.subscriptionQueue
 
         XCTAssertEqual(actual, expected)

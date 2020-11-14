@@ -3,39 +3,31 @@ import Combine
 @testable import NetStack
 
 
-private enum TestData {
-    static let customSubscriptionQueue = DispatchQueue(label: "Custom Queue")
-    //    static let endpointURL = URL(string: "https://www.example.com")!
-    //    static let mockFileDataTasker = MockFileDataTasker()
-    enum FilePaths {
-        static let headline = "headline"
-        static let json = "weather-data"
-    }
-}
-
 
 final class FileRequestPublisherTests: XCTestCase {
     private var subscriptions = Set<AnyCancellable>()
-    
     private var sut: FileRequestPublisher!
-    
+    private var bundle: Bundle!
+
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         
+        bundle = Bundle.module
         sut = makeSUT()
     }
     
     
     override func tearDownWithError() throws {
         sut = nil
+        bundle = nil
         
         try super.tearDownWithError()
     }
     
     
     func makeSUT(
-        subscriptionQueue: DispatchQueue = TestData.customSubscriptionQueue,
+        subscriptionQueue: DispatchQueue = TestConstants.customSubscriptionQueue,
         dataTasker: SessionDataTaskPublishing = MockFileDataTasker(responseData: Data())
     ) -> FileRequestPublisher {
         FileRequestPublisher(
@@ -64,7 +56,7 @@ final class FileRequestPublisherTests: XCTestCase {
 // MARK: - Init
 extension FileRequestPublisherTests {
     
-    func test_WhenCreated_WithDefaults_SetsSubscriptionQueueToGlobalQueue() {
+    func test_Creation_WithDefaults_SetsSubscriptionQueueToGlobalQueue() {
         sut = makeSUTFromDefaults()
         
         let expected = DispatchQueue.global()
@@ -85,7 +77,7 @@ extension FileRequestPublisherTests {
     
     
     func test_Creation_WithSubscriptionQueue_SetsSubscriptionQueue() {
-        let expected = TestData.customSubscriptionQueue
+        let expected = TestConstants.customSubscriptionQueue
         let actual = sut.subscriptionQueue
         
         XCTAssertEqual(actual, expected)
@@ -109,8 +101,8 @@ extension FileRequestPublisherTests {
 extension FileRequestPublisherTests {
     
     func test_PerformRequestForTxtFile_WhenSuccessful_PublishesFileResponse() throws {
-        let url = try XCTUnwrap(Bundle.module.url(
-            forResource: TestData.FilePaths.headline,
+        let url = try XCTUnwrap(bundle.url(
+            forResource: TestConstants.FilePaths.headlineText,
             withExtension: "txt"
         ))
         
@@ -135,8 +127,8 @@ extension FileRequestPublisherTests {
     
     
     func test_PerformRequestForJSONFile_WhenSuccessful_PublishesFileResponse() throws {
-        let url = try XCTUnwrap(Bundle.module.url(
-            forResource: TestData.FilePaths.json,
+        let url = try XCTUnwrap(bundle.url(
+            forResource: TestConstants.FilePaths.weatherDataJSON,
             withExtension: "json"
         ))
         
@@ -171,8 +163,8 @@ extension FileRequestPublisherTests {
 extension FileRequestPublisherTests {
     
     func test_PerformRequest_WhenFailed_PublishesCompletionWithFileLoadingError() throws {
-        let url = try XCTUnwrap(Bundle.module.url(
-            forResource: TestData.FilePaths.json,
+        let url = try XCTUnwrap(bundle.url(
+            forResource: TestConstants.FilePaths.weatherDataJSON,
             withExtension: "json"
         ))
         
