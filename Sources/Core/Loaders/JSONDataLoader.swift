@@ -8,11 +8,19 @@ public enum JSONDataLoaderError: Error {
 }
 
 
-public enum JSONDataLoader {
-    static let requestPublisher = FileRequestPublisher()
+public struct JSONDataLoader {
+//    static let requestPublisher = FileRequestPublisher()
+    private let requestPublisher: FileRequestPublisher
     
     
-    public static func load(
+    public init(
+        dataTasker: SessionDataTaskPublishing = URLSession.shared
+    ) {
+        self.requestPublisher = FileRequestPublisher(dataTasker: dataTasker)
+    }
+    
+    
+    public func load(
         fromFileNamed fileName: String,
         in bundle: Bundle = .main
     ) -> AnyPublisher<Data, JSONDataLoaderError> {
@@ -28,8 +36,8 @@ public enum JSONDataLoader {
         return requestPublisher
             .perform(URLRequest(url: url))
             .compactMap(\.body)
-            .mapError { networkError in
-                .networkError(networkError)
+            .mapError { error in
+                .networkError(error)
             }
             .eraseToAnyPublisher()
     }

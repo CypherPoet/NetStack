@@ -17,6 +17,10 @@ let package = Package(
             name: "NetStack",
             targets: ["NetStack"]
         ),
+        .library(
+            name: "NetStackTestUtils",
+            targets: ["NetStackTestUtils"]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -28,11 +32,21 @@ let package = Package(
         .target(
             name: "NetStack",
             dependencies: [],
-            path: "Sources/"
+            path: "Sources/Core"
+        ),
+        .target(
+            name: "NetStackTestUtils",
+            dependencies: [
+                "NetStack",
+            ],
+            path: "Sources/TestUtils"
         ),
         .testTarget(
             name: "NetStackTests",
-            dependencies: ["NetStack"],
+            dependencies: [
+                "NetStack",
+                "NetStackTestUtils",
+            ],
             path: "Tests/",
             resources: [
                 .process("./Data/headline.txt"),
