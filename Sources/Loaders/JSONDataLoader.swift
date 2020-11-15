@@ -34,3 +34,8 @@ public enum JSONDataLoader {
             .eraseToAnyPublisher()
     }
 }
+
+
+extension JSONDataLoader {
+    
+}

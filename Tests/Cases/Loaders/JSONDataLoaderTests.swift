@@ -26,59 +26,33 @@ final class JSONDataLoaderTests: XCTestCase {
 extension JSONDataLoaderTests {
     
     func test_LoadFromBundleFile_PublishesData() throws {
-        let dataWasPublished = expectation(description: "Data was published")
+        let publisher = JSONDataLoader
+            .load(
+                fromFileNamed: TestConstants.FilePaths.weatherDataJSON,
+                in: bundle
+            )
         
-        JSONDataLoader
-            .load(fromFileNamed: TestConstants.FilePaths.weatherDataJSON, in: bundle)
-            .sink { (completion) in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    XCTFail(error.localizedDescription)
-                }
-            } receiveValue: { (data) in
-                dataWasPublished.fulfill()
-            }
-            .store(in: &subscriptions)
-        
-        waitForExpectations(timeout: 2.0)
+        XCTAssertNoThrow(try awaitCompletion(of: publisher))
     }
     
     
     func test_LoadFromBundleFile_WhenFileDoesntExist_FailsWithFileNotFoundError() throws {
-        let dataWasPublished = expectation(description: "Data was published")
-        let errorWasPublished = expectation(description: "Publisher failed with error")
-        
-        dataWasPublished.isInverted = true
-        
-        JSONDataLoader
+        let publisher = JSONDataLoader
             .load(
                 fromFileNamed: TestConstants.FilePaths.weatherDataJSON + "nope",
                 in: bundle
             )
-            .sink(
-                receiveCompletion: { (completion) in
-                    switch completion {
-                    case .finished:
-                        break
-                    case .failure(let error):
-                        errorWasPublished.fulfill()
-                        
-                        switch error {
-                        case .fileNotFound(_):
-                            break
-                        default:
-                            XCTFail("Unexpected error case: \(error)")
-                        }
-                    }
-                },
-                receiveValue: { _ in
-                    dataWasPublished.fulfill()
-                }
-            )
-            .store(in: &subscriptions)
         
-        waitForExpectations(timeout: 2.0)
+        XCTAssertThrowsError(try awaitCompletion(of: publisher)) { (error) in
+            let error = try! XCTUnwrap(error as? JSONDataLoaderError)
+            
+            switch error {
+            case .fileNotFound:
+                break
+            default:
+                XCTFail("Unexpected error case: \(error)")
+            }
+        }
     }
 }
+
