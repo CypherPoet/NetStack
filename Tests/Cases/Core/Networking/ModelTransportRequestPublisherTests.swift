@@ -32,7 +32,7 @@ final class ModelTransportRequestPublisherTests: XCTestCase {
 
     func makeSUT() -> ModelTransportRequestPublisher {
         .init(
-            requestPublisher: TransportRequestPublisher(dataTasker: dataTasker)
+            transporter: TransportRequestPublisher(dataTasker: dataTasker)
         )
     }
 

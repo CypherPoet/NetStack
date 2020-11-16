@@ -33,13 +33,13 @@ public protocol ModelTransportRequestPublishing {
 
 
 public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
-    public var requestPublisher: TransportRequestPublishing
+    public var transporter: TransportRequestPublishing
 
     
     public init(
-        requestPublisher: TransportRequestPublishing = TransportRequestPublisher()
+        transporter: TransportRequestPublishing = TransportRequestPublisher()
     ) {
-        self.requestPublisher = requestPublisher
+        self.transporter = transporter
     }
 
 
@@ -47,7 +47,7 @@ public class ModelTransportRequestPublisher: ModelTransportRequestPublishing {
         _ request: URLRequest,
         decodingWith decoder: JSONDecoder = .init()
     ) -> AnyPublisher<Model, NetworkError> {
-        requestPublisher
+        transporter
             .perform(request)
             .flatMap { networkResponse in
                 return Just(networkResponse)
