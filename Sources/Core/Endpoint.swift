@@ -29,7 +29,7 @@ extension Endpoint {
         var urlComponents = URLComponents()
         
         urlComponents.host = host
-        urlComponents.path = path
+        urlComponents.path = "/" + path
         urlComponents.scheme = scheme
         urlComponents.queryItems = queryItems
 

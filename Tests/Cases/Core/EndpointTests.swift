@@ -3,8 +3,11 @@ import XCTest
 
 
 final class EndpointTests: XCTestCase {
-
     private var sut: Endpoint!
+    private var path: String!
+    private var host: String!
+    private var scheme: String!
+    private var queryItems: [URLQueryItem]!
 }
 
 
@@ -12,19 +15,22 @@ final class EndpointTests: XCTestCase {
 extension EndpointTests {
 
     override func setUpWithError() throws {
-        // Put setup code here.
-        // This method is called before the invocation of each
-        // test method in the class.
         try super.setUpWithError()
 
-        sut = makeSUTWithDefaults()
+        host = "www.example.com"
+        path = "test"
+        scheme = "https"
+        queryItems = nil
+        
+        sut = makeSUT()
     }
 
 
     override func tearDownWithError() throws {
-        // Put teardown code here.
-        // This method is called after the invocation of each
-        // test method in the class.
+        host = nil
+        path = nil
+        scheme = nil
+        queryItems = nil
         sut = nil
 
         try super.tearDownWithError()
@@ -36,17 +42,12 @@ extension EndpointTests {
 extension EndpointTests {
 
     func makeSUTWithDefaults() -> Endpoint {
-        Endpoint(host: "www.example.com", path: "/test")
+        .init(host: host, path: path)
     }
 
 
-    func makeSUT(
-        host: String,
-        path: String,
-        scheme: String = "https",
-        queryItems: [URLQueryItem]? = nil
-    ) -> Endpoint {
-        Endpoint(
+    func makeSUT() -> Endpoint {
+        .init(
             host: host,
             path: path,
             scheme: scheme,
@@ -59,21 +60,14 @@ extension EndpointTests {
 // MARK: - Test Initial Conditions
 extension EndpointTests {
 
-    func test_init_setsDefaultScheme() throws {
-        XCTAssertEqual(sut.scheme, "https")
+    func test_Creation_SetsDefaultScheme() throws {
+        XCTAssertEqual(sut.scheme, scheme)
     }
 
 
-    func test_init_withHostAndPath_computesURL() throws {
+    func test_Creation_WithHostAndValidPath_ComputesURL() throws {
         let url = try XCTUnwrap(sut.url)
 
-        XCTAssertEqual(url.absoluteString, "https://www.example.com/test")
-    }
-
-
-    func test_init_withBadPath_computesNoURL() throws {
-        sut = makeSUT(host: "asdf", path: "🍕")
-
-        XCTAssertNil(sut.url)
+        XCTAssertEqual(url.absoluteString, "\(scheme!)://\(host!)/\(path!)")
     }
 }
