@@ -3,53 +3,42 @@ import Combine
 @testable import NetStack
 
 
-private enum TestData {
-    static let player = Player(name: "Gandalf", xp: 100.32, level: 10)
-    static let endpointURL = URL(string: "https://www.example.com")!
-}
-
-
 final class ModelTransportRequestPublisherTests: XCTestCase {
     private var subscriptions = Set<AnyCancellable>()
+    
+    typealias MockDataURLResponder = ModelTransportRequestPublisher.MockDataURLResponder
+    typealias MockErrorURLResponder = ModelTransportRequestPublisher.MockErrorURLResponder
 
+    
+    private var dataTasker: SessionDataTaskPublishing!
     private var sut: ModelTransportRequestPublisher!
 
 
     override func setUpWithError() throws {
         try super.setUpWithError()
 
-        sut = makeSUT(
-            requestPublisher: MockRequestPublisher()
-        )
+        dataTasker = URLSession(mockResponder: MockDataURLResponder.self)
+        sut = makeSUT()
     }
 
 
     override func tearDownWithError() throws {
+        dataTasker = nil
         sut = nil
 
         try super.tearDownWithError()
     }
 
 
-    func makeSUT(
-        requestPublisher: TransportRequestPublishing
-    ) -> ModelTransportRequestPublisher {
-        .init(requestPublisher: requestPublisher)
+    func makeSUT() -> ModelTransportRequestPublisher {
+        .init(
+            requestPublisher: TransportRequestPublisher(dataTasker: dataTasker)
+        )
     }
 
 
     func makeSUTFromDefaults() -> ModelTransportRequestPublisher {
         .init()
-    }
-
-
-    func handleCompletionWithNetworkError(completion: Subscribers.Completion<NetworkError>) {
-        switch completion {
-        case .failure(let error):
-            XCTFail(error.localizedDescription)
-        case .finished:
-            break
-        }
     }
 }
 
@@ -57,67 +46,32 @@ final class ModelTransportRequestPublisherTests: XCTestCase {
 // MARK: - Core Functionality
 extension ModelTransportRequestPublisherTests {
 
-    func test_EncodeDataForModel_CreatesEncodedData() {
-        let player = TestData.player
-        let dataWasEncoded = expectation(description: "Model data was encoded")
+    func test_EncodeDataForModel_CreatesEncodedData() throws {
+        let player = TestConstants.SampleModels.player
+        let expectedData = try JSONEncoder().encode(player)
 
-        sut
-            .encode(dataFor: player)
-            .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        XCTFail(error.localizedDescription)
-                    case .finished:
-                        break
-                    }
-                },
-                receiveValue: { _ in
-                    dataWasEncoded.fulfill()
-                }
-            )
-            .store(in: &subscriptions)
-
-        waitForExpectations(timeout: 1.0)
+        let publisher = sut.encode(dataFor: player)
+        let result = try awaitCompletion(of: publisher)
+        
+        XCTAssertEqual(result, [expectedData])
     }
 
 
-    func test_EncodeDataForModelIntoBodyOfRequest_EncodesDataAndSetsItOnARequestBody() {
-        let player = TestData.player
-        let requestWasConfigured = expectation(description: "Model data was encoded and set on request body")
+    func test_EncodeDataForModelIntoBodyOfRequest_EncodesDataAndSetsItOnARequestBody() throws {
+        let player = TestConstants.SampleModels.player
 
-        let request = URLRequest(url: TestData.endpointURL)
-
-        sut
-            .encode(dataFor: player, intoBodyOf: request)
-            .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        XCTFail(error.localizedDescription)
-                    case .finished:
-                        break
-                    }
-                },
-                receiveValue: { request in
-                    let body = try! XCTUnwrap(request.httpBody)
-
-                    XCTAssertFalse(body.isEmpty)
-                    requestWasConfigured.fulfill()
-                }
-            )
-            .store(in: &subscriptions)
-
-        waitForExpectations(timeout: 1.0)
+        let expectedData = try JSONEncoder().encode(player)
+        let request = URLRequest(url: TestConstants.EndpointURLs.example)
+        let publisher = sut.encode(dataFor: player, intoBodyOf: request)
+        
+        let result = try awaitCompletion(of: publisher)
+        
+        XCTAssertEqual(result.first?.httpBody, expectedData)
     }
 
 
     func test_SendEncodedDataForModelInBodyOfRequest_EncodesDataAndPerformsAPost() throws {
-        let postSucceeded = expectation(description: "Post of data payload should succeed.")
-        let player = TestData.player
-        let playerResponseData = try JSONEncoder().encode(player)
-
-        var request = URLRequest(url: TestData.endpointURL)
+        var request = URLRequest(url: TestConstants.EndpointURLs.example)
 
         RequestConfigurator.configure(
             &request,
@@ -125,26 +79,10 @@ extension ModelTransportRequestPublisherTests {
             method: .post
         )
 
-        let mockRequestPublisher = MockRequestPublisher(
-            responseData: playerResponseData,
-            responseStatus: HTTPStatus.created
-        )
-
-        sut = makeSUT(requestPublisher: mockRequestPublisher)
-        sut
-            .send(
-                dataFor: player,
-                inBodyOf: request
-            )
-            .sink(
-                receiveCompletion: handleCompletionWithNetworkError,
-                receiveValue: { savedPlayer in
-                    XCTAssertEqual(savedPlayer.name, player.name)
-                    postSucceeded.fulfill()
-                }
-            )
-            .store(in: &subscriptions)
-
-        waitForExpectations(timeout: 1.0)
+        let player = MockDataURLResponder.responseModel
+        let publisher = sut.send(dataFor: player, inBodyOf: request)
+        let result = try awaitCompletion(of: publisher)
+        
+        XCTAssertEqual(result, [player])
     }
 }

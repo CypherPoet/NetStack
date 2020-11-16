@@ -3,17 +3,22 @@ import Combine
 @testable import NetStack
 
 
-
 final class FileRequestPublisherTests: XCTestCase {
     private var subscriptions = Set<AnyCancellable>()
+    
+    typealias MockDataURLResponder = FileRequestPublisher.MockDataURLResponder
+    typealias MockErrorURLResponder = FileRequestPublisher.MockErrorURLResponder
+    
     private var sut: FileRequestPublisher!
     private var bundle: Bundle!
+    private var dataTasker: SessionDataTaskPublishing!
 
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         
         bundle = Bundle.module
+        dataTasker = URLSession(mockResponder: MockDataURLResponder.self)
         sut = makeSUT()
     }
     
@@ -21,16 +26,16 @@ final class FileRequestPublisherTests: XCTestCase {
     override func tearDownWithError() throws {
         sut = nil
         bundle = nil
+        dataTasker = nil
         
         try super.tearDownWithError()
     }
     
     
     func makeSUT(
-        subscriptionQueue: DispatchQueue = TestConstants.customSubscriptionQueue,
-        dataTasker: SessionDataTaskPublishing = MockFileDataTasker(responseData: Data())
+        subscriptionQueue: DispatchQueue = TestConstants.customSubscriptionQueue
     ) -> FileRequestPublisher {
-        FileRequestPublisher(
+        .init(
             subscriptionQueue: subscriptionQueue,
             dataTasker: dataTasker
         )
@@ -38,17 +43,7 @@ final class FileRequestPublisherTests: XCTestCase {
     
     
     func makeSUTFromDefaults() -> FileRequestPublisher {
-        FileRequestPublisher()
-    }
-    
-    
-    func failOnCompletionWithFileLoadingError(completion: Subscribers.Completion<FileLoadingError>) {
-        switch completion {
-        case .failure(let error):
-            XCTFail(error.localizedDescription)
-        case .finished:
-            break
-        }
+        .init()
     }
 }
 
@@ -77,17 +72,18 @@ extension FileRequestPublisherTests {
     
     
     func test_Creation_WithSubscriptionQueue_SetsSubscriptionQueue() {
-        let expected = TestConstants.customSubscriptionQueue
+        let expectedQueue = TestConstants.customSubscriptionQueue
         let actual = sut.subscriptionQueue
+
+        sut = makeSUT(subscriptionQueue: expectedQueue)
         
-        XCTAssertEqual(actual, expected)
+        XCTAssertEqual(actual, expectedQueue)
     }
     
     
     func test_Creation_WithDataTasker_SetsDataTasker() {
-        let dataTasker = MockFileDataTasker(responseData: Data())
-        
-        sut = makeSUT(dataTasker: dataTasker)
+        dataTasker = URLSession(mockResponder: MockDataURLResponder.self)
+        sut = makeSUT()
         
         let expected = dataTasker
         let actual = sut.dataTasker
@@ -107,22 +103,9 @@ extension FileRequestPublisherTests {
         ))
         
         let request = URLRequest(url: url)
+        let publisher = sut.perform(request)
         
-        let receivedResponse = expectation(
-            description: "Received response after performing a successful request."
-        )
-        
-        sut
-            .perform(request)
-            .sink(
-                receiveCompletion: failOnCompletionWithFileLoadingError,
-                receiveValue: { response in
-                    receivedResponse.fulfill()
-                }
-            )
-            .store(in: &subscriptions)
-        
-        waitForExpectations(timeout: 1.0)
+        XCTAssertNoThrow(try awaitCompletion(of: publisher))
     }
     
     
@@ -133,28 +116,9 @@ extension FileRequestPublisherTests {
         ))
         
         let request = URLRequest(url: url)
+        let publisher = sut.perform(request)
         
-        let receivedResponse = expectation(
-            description: "Received response after performing a successful request"
-        )
-        
-        let response = "🦄"
-        let responseData = Data(response.utf8)
-        
-        sut = makeSUT(dataTasker: MockFileDataTasker(responseData: responseData))
-        
-        sut
-            .perform(request)
-            .sink(
-                receiveCompletion: failOnCompletionWithFileLoadingError,
-                receiveValue: { response in
-                    XCTAssertNotNil(response.body)
-                    receivedResponse.fulfill()
-                }
-            )
-            .store(in: &subscriptions)
-        
-        waitForExpectations(timeout: 1.0)
+        XCTAssertNoThrow(try awaitCompletion(of: publisher))
     }
 }
 
@@ -163,88 +127,23 @@ extension FileRequestPublisherTests {
 extension FileRequestPublisherTests {
     
     func test_PerformRequest_WhenFailed_PublishesCompletionWithFileLoadingError() throws {
-        let url = try XCTUnwrap(bundle.url(
-            forResource: TestConstants.FilePaths.weatherDataJSON,
-            withExtension: "json"
-        ))
+        dataTasker = URLSession(mockResponder: MockErrorURLResponder.self)
+        sut = makeSUT()
+
+        let url = URL(fileURLWithPath: "this doesn't exist")
         
         let request = URLRequest(url: url)
-        let urlErrorCode = URLError.Code.badURL
-        let urlError = URLError(urlErrorCode)
+        let publisher = sut.perform(request)
         
-        let expectedErrorCode = FileLoadingError.Code(urlError: urlError)
-        let expectedError = FileLoadingError(code: expectedErrorCode, request: request)
-        
-        let receivedCompletionWithError = expectation(
-            description: "Received completion with error after performing request."
-        )
-        
-        let mockDataTasker = MockFileDataTasker(
-            responseData: Data(),
-            error: urlError
-        )
-        
-        sut = makeSUT(dataTasker: mockDataTasker)
-        
-        sut
-            .perform(request)
-            .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        XCTAssertTrue(type(of: error) == type(of: expectedError))
-                        receivedCompletionWithError.fulfill()
-                    case .finished:
-                        break
-                    }
-                },
-                receiveValue: { value in
-                    XCTFail("Unexpected value received: \(value)")
-                }
-            )
-            .store(in: &subscriptions)
-        
-        waitForExpectations(timeout: 1.0)
-    }
-}
-
-
-final class MockFileDataTasker {
-    var responseData: Data
-    var mimeType: String
-    var error: URLError?
-    
-    
-    init(
-        responseData: Data,
-        mimeType: String = "application/json",
-        error: URLError? = nil
-    ) {
-        self.responseData = responseData
-        self.mimeType = mimeType
-        self.error = error
-    }
-}
-
-
-extension MockFileDataTasker: SessionDataTaskPublishing {
-    
-    func response(for request: URLRequest) -> AnyPublisher<DataTaskResponse, DataTaskFailure> {
-        guard error == nil else {
-            return Fail(error: error!).eraseToAnyPublisher()
+        XCTAssertThrowsError(try awaitCompletion(of: publisher)) { (error) in
+            let error = try! XCTUnwrap(error as? FileLoadingError)
+            
+            switch error.code {
+            case .badURL:
+                break
+            default:
+                XCTFail("Unexpected error case: \(error)")
+            }
         }
-        
-        let response = URLResponse(
-            url: request.url!,
-            mimeType: mimeType,
-            expectedContentLength: 0,
-            textEncodingName: nil
-        )
-        
-        let data = responseData
-        
-        return Just((data: data, response: response))
-            .setFailureType(to: DataTaskFailure.self)
-            .eraseToAnyPublisher()
     }
 }

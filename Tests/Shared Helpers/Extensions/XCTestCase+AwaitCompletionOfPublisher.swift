@@ -5,7 +5,7 @@ import XCTest
 
 extension XCTestCase {
     
-    func awaitCompletion<PublisherType: Publisher>(
+    public func awaitCompletion<PublisherType: Publisher>(
         of publisher: PublisherType,
         timeout: TimeInterval = 10
     ) throws -> [PublisherType.Output] {

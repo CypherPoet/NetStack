@@ -4,26 +4,26 @@ import Combine
 
 
 final class TransportRequestPublisherTests: XCTestCase {
-    
-    private enum TestData {
-        static let endpointURL = URL(string: "https://www.example.com")!
-        static let mockDataTasker = MockDataTasker()
-    }
-
-    
     private var subscriptions = Set<AnyCancellable>()
+    
+    typealias MockDataURLResponder = TransportRequestPublisher.MockDataURLResponder
+    typealias MockErrorURLResponder = TransportRequestPublisher.MockErrorURLResponder
 
+    
+    private var dataTasker: SessionDataTaskPublishing!
     private var sut: TransportRequestPublisher!
 
 
     override func setUpWithError() throws {
         try super.setUpWithError()
 
+        dataTasker = URLSession(mockResponder: MockDataURLResponder.self)
         sut = makeSUT()
     }
 
 
     override func tearDownWithError() throws {
+        dataTasker = nil
         sut = nil
 
         try super.tearDownWithError()
@@ -31,10 +31,9 @@ final class TransportRequestPublisherTests: XCTestCase {
 
 
     func makeSUT(
-        subscriptionQueue: DispatchQueue = TestConstants.customSubscriptionQueue,
-        dataTasker: SessionDataTaskPublishing = TestData.mockDataTasker
+        subscriptionQueue: DispatchQueue = TestConstants.customSubscriptionQueue
     ) -> TransportRequestPublisher {
-        TransportRequestPublisher(
+        .init(
             subscriptionQueue: subscriptionQueue,
             dataTasker: dataTasker
         )
@@ -42,17 +41,7 @@ final class TransportRequestPublisherTests: XCTestCase {
 
 
     func makeSUTFromDefaults() -> TransportRequestPublisher {
-        TransportRequestPublisher()
-    }
-
-
-    func failOnCompletionWithNetworkError(completion: Subscribers.Completion<NetworkError>) {
-        switch completion {
-        case .failure(let error):
-            XCTFail(error.localizedDescription)
-        case .finished:
-            break
-        }
+        .init()
     }
 }
 
@@ -89,7 +78,10 @@ extension TransportRequestPublisherTests {
 
 
     func test_WhenCreated_WithDataTasker_SetsDataTasker() {
-        let expected = TestData.mockDataTasker
+        dataTasker = URLSession(mockResponder: MockDataURLResponder.self)
+        sut = makeSUT()
+        
+        let expected = dataTasker
         let actual = sut.dataTasker
 
         XCTAssertTrue(actual === expected)
@@ -101,44 +93,10 @@ extension TransportRequestPublisherTests {
 extension TransportRequestPublisherTests {
 
     func test_PerformGETRequest_WhenSuccessful_PublishesNetworkResponse() {
-        let request = URLRequest(url: TestData.endpointURL)
-        let receivedResponse = expectation(description: "Received response after performing a successful request.")
-
-        sut
-            .perform(request)
-            .sink(
-                receiveCompletion: failOnCompletionWithNetworkError,
-                receiveValue: { response in
-                    receivedResponse.fulfill()
-                }
-            )
-            .store(in: &subscriptions)
-
-        waitForExpectations(timeout: 1.0)
-    }
-
-
-    func test_PerformGETRequest_WhenSuccessful_PublishesNetworkResponseWithDataInBody() throws {
-        let request = URLRequest(url: TestData.endpointURL)
-        let receivedResponse = expectation(description: "Received response after performing a successful request")
-
-        let response = "🦄"
-        let responseData = Data(response.utf8)
-
-        sut = makeSUT(dataTasker: MockDataTasker(responseData: responseData))
-
-        sut
-            .perform(request)
-            .sink(
-                receiveCompletion: failOnCompletionWithNetworkError,
-                receiveValue: { response in
-                    XCTAssertNotNil(response.body)
-                    receivedResponse.fulfill()
-                }
-            )
-            .store(in: &subscriptions)
-
-        waitForExpectations(timeout: 1.0)
+        let request = URLRequest(url: TestConstants.EndpointURLs.example)
+        let publisher = sut.perform(request)
+        
+        XCTAssertNoThrow(try awaitCompletion(of: publisher))
     }
 }
 
@@ -147,30 +105,22 @@ extension TransportRequestPublisherTests {
 extension TransportRequestPublisherTests {
 
     func test_PerformGETRequest_WhenFailed_PublishesCompletionWithNetworkError() throws {
-        let request = URLRequest(url: TestData.endpointURL)
-        let receivedCompletionWithError = expectation(description: "Received completion with error after performing request.")
+        dataTasker = URLSession(mockResponder: MockErrorURLResponder.self)
+        sut = makeSUT()
 
-        sut = makeSUT(dataTasker: MockDataTasker(responseStatus: .badRequest))
-
-        sut
-            .perform(request)
-            .sink(
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error):
-                        XCTAssertEqual(error.code, .badRequest)
-                        receivedCompletionWithError.fulfill()
-                    case .finished:
-                        break
-                    }
-                },
-                receiveValue: { value in
-                    XCTFail("Unexpected value received: \(value)")
-                }
-            )
-            .store(in: &subscriptions)
-
-        waitForExpectations(timeout: 1.0)
+        let request = URLRequest(url: TestConstants.EndpointURLs.example)
+        let publisher = sut.perform(request)
+        
+        XCTAssertThrowsError(try awaitCompletion(of: publisher)) { (error) in
+            let error = try! XCTUnwrap(error as? NetworkError)
+            
+            switch error.code {
+            case .badURL:
+                break
+            default:
+                XCTFail("Unexpected error case: \(error)")
+            }
+        }
     }
 }
 

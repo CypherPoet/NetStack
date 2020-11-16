@@ -2,23 +2,20 @@ import XCTest
 @testable import NetStack
 
 
-private enum TestData {
-    static let url = URL(string: "https://example.com")!
-    static let urlRequest = URLRequest(url: url)
-
-    enum Responses {
-        static let creationSuccess = HTTPURLResponse(
-            url: url,
-            statusCode: HTTPStatus.created.rawValue,
-            httpVersion: String(kCFHTTPVersion1_1),
-            headerFields: [String : String]()
-        )!
-    }
-}
-
 
 final class NetworkResponseTests: XCTestCase {
     private var sut: NetworkResponse!
+    
+    enum SampleData {
+        enum Responses {
+            static let creationSuccess = HTTPURLResponse(
+                url: TestConstants.EndpointURLs.example,
+                statusCode: HTTPStatus.created.rawValue,
+                httpVersion: String(kCFHTTPVersion1_1),
+                headerFields: [String : String]()
+            )!
+        }
+    }
 
 
     override func setUpWithError() throws {
@@ -34,11 +31,11 @@ final class NetworkResponseTests: XCTestCase {
 
 
     func makeSUT(
-        request: URLRequest = TestData.urlRequest,
+        request: URLRequest = .init(url: TestConstants.EndpointURLs.example),
         response: HTTPURLResponse,
         body: Data? = nil
     ) -> NetworkResponse {
-        NetworkResponse(request: request, response: response, body: body)
+        .init(request: request, response: response, body: body)
     }
 }
 
@@ -47,9 +44,9 @@ final class NetworkResponseTests: XCTestCase {
 extension NetworkResponseTests {
 
     func test_Status_UsesResponseStatusCode() throws {
-        sut = makeSUT(response: TestData.Responses.creationSuccess)
+        sut = makeSUT(response: SampleData.Responses.creationSuccess)
 
-        let expected = TestData.Responses.creationSuccess.statusCode
+        let expected = SampleData.Responses.creationSuccess.statusCode
         let actual = sut.status.rawValue
 
         XCTAssertEqual(actual, expected)
@@ -57,7 +54,8 @@ extension NetworkResponseTests {
 
 
     func test_Message_UsesLocalizedStringForStatusCode() throws {
-        let response = TestData.Responses.creationSuccess
+        let response = SampleData.Responses.creationSuccess
+        
         sut = makeSUT(response: response)
 
         let expected = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
@@ -68,10 +66,11 @@ extension NetworkResponseTests {
     
     
     func test_Header_UsesAllHeaderFieldsOnResponse() throws {
-        let response = TestData.Responses.creationSuccess
+        let response = SampleData.Responses.creationSuccess
+        
         sut = makeSUT(response: response)
 
-        let expected = TestData.Responses.creationSuccess.allHeaderFields as! [String: String]
+        let expected = SampleData.Responses.creationSuccess.allHeaderFields as! [String: String]
         let actual = sut.headers as! [String: String]
 
         XCTAssertEqual(actual, expected)

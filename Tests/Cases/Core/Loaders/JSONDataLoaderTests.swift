@@ -8,6 +8,8 @@ import NetStackTestUtils
 final class JSONDataLoaderTests: XCTestCase {
     private var subscriptions = Set<AnyCancellable>()
 
+    typealias MockDataURLResponder = FileRequestPublisher.MockDataURLResponder
+
     private var bundle: Bundle!
     private var session: URLSession!
     private var sut: JSONDataLoader!
@@ -17,7 +19,7 @@ final class JSONDataLoaderTests: XCTestCase {
         try super.setUpWithError()
             
         bundle = Bundle.module
-        session = URLSession(mockResponder: JSONDataLoader.MockDataURLResponder.self)
+        session = URLSession(mockResponder: MockDataURLResponder.self)
         sut = makeSUT()
     }
     

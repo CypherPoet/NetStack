@@ -9,7 +9,6 @@ public enum JSONDataLoaderError: Error {
 
 
 public struct JSONDataLoader {
-//    static let requestPublisher = FileRequestPublisher()
     private let requestPublisher: FileRequestPublisher
     
     
@@ -43,7 +42,3 @@ public struct JSONDataLoader {
     }
 }
 
-
-extension JSONDataLoader {
-    
-}
