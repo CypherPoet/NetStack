@@ -11,7 +11,7 @@ final class NetworkResponseTests: XCTestCase {
             static let creationSuccess = HTTPURLResponse(
                 url: TestConstants.EndpointURLs.example,
                 statusCode: HTTPStatus.created.rawValue,
-                httpVersion: String(kCFHTTPVersion1_1),
+                httpVersion: HTTPVersion.V1_1.rawValue,
                 headerFields: [String : String]()
             )!
         }
