@@ -2,7 +2,7 @@ import Foundation
 
 
 /**
- * Convinience type to interface with `CoreFoundation`s' HTTP version
+ * Convenience type to interface with `CoreFoundation`s' HTTP version
  * keys and their corresponding `CFString` values
  */
 public struct HTTPVersion {

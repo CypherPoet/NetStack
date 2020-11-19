@@ -39,10 +39,12 @@ _A Combine-based networking stack for modern Swift projects. Use as-is &mdash; o
 
 - ✅ Composable, Combine-based publisher primitives for constructing pipelines that map from URLRequests to `Data` and `Decodable` models.
 - ✅ Utilities for URLRequest configuration.
-- ✅ Utilities for mocking URLRequest responses in tests. 
+- ✅ Utilities for mocking URLRequest responses in tests.
 
 
 ## Installation
+
+`NetStack` ships with two [library products](https://developer.apple.com/documentation/swift_packages/product): `NetStack` and `NetStackTestUtils`.
 
 ### Xcode Projects
 
@@ -51,7 +53,7 @@ Select `File` -> `Swift Packages` -> `Add Package Dependency` and enter `https:/
 
 ### Swift Package Manager Projects
 
-You can add `NetStack` as a dependency in your `Package.swift` file:
+You can add `NetStack` as a package dependency in your `Package.swift` file:
 
 ```swift
 let package = Package(
@@ -63,9 +65,32 @@ let package = Package(
 )
 ```
 
+From there, refer to it as a target dependency in any of your package's targets that need it.
 
-Then simply `import NetStack` wherever you’d like to use it.
+`NetStack` "Core" can be referred to directly, and `NetStackTestUtils` can be referenced as a `product` name:
 
+```swift
+targets: [
+    .target(
+        name: "MyLibrary",
+        dependencies: [
+          "NetStack",
+        ],
+        ...
+    ),
+    .testTarget(
+        name: "MyLibraryTests",
+        dependencies: [
+          "MyLibrary",
+          .product(name: "NetStackTestUtils", package: "NetStack"),
+        ],
+        ...
+    ),
+    ...
+]
+```
+
+Then simply `import NetStack` and `import NetStackTestUtils` wherever you’d like to use them.
 
 
 ## Usage
