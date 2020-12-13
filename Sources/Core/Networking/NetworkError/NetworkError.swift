@@ -36,3 +36,10 @@ extension NetworkError: Error {}
 extension NetworkError: Identifiable {
     public var id: Int { code.rawValue }
 }
+
+// MARK: - Equatable
+extension NetworkError: Equatable {
+    public static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
+        lhs.code == rhs.code
+    }
+}

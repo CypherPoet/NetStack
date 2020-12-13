@@ -64,6 +64,8 @@ extension NetworkError {
     }
 }
 
+extension NetworkError.Code: Equatable {}
+
 
 // MARK: - Init from `HTTPURLResponse`
 extension NetworkError.Code {
