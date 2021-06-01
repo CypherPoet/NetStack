@@ -13,9 +13,13 @@ public struct JSONDataLoader {
     
     
     public init(
+        subscriptionQueue: DispatchQueue = .global(),
         dataTasker: SessionDataTaskPublishing = URLSession.shared
     ) {
-        self.requestPublisher = FileRequestPublisher(dataTasker: dataTasker)
+        self.requestPublisher = FileRequestPublisher(
+            subscriptionQueue: subscriptionQueue,
+            dataTasker: dataTasker
+        )
     }
     
     
