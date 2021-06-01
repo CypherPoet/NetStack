@@ -1,0 +1,950 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Endpoint.swift",
+      "line": 4,
+      "symbol": "Endpoint",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Endpoint.swift",
+      "line": 5,
+      "symbol": "Endpoint.host",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Endpoint.swift",
+      "line": 6,
+      "symbol": "Endpoint.path",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Endpoint.swift",
+      "line": 7,
+      "symbol": "Endpoint.scheme",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Endpoint.swift",
+      "line": 8,
+      "symbol": "Endpoint.queryItems",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Endpoint.swift",
+      "line": 11,
+      "symbol": "Endpoint.init(host:path:scheme:queryItems:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Endpoint.swift",
+      "line": 26,
+      "symbol": "Endpoint",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Endpoint.swift",
+      "line": 40,
+      "symbol": "Endpoint.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Extensions/URLSession+SessionDataTaskPublishing.swift",
+      "line": 7,
+      "symbol": "URLSession.response(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 4,
+      "symbol": "HTTPContentType",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 5,
+      "symbol": "HTTPContentType.rawValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 8,
+      "symbol": "HTTPContentType.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 13,
+      "symbol": "HTTPContentType",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 16,
+      "symbol": "HTTPContentType",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 17,
+      "symbol": "HTTPContentType.json",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPContentType.swift",
+      "line": 18,
+      "symbol": "HTTPContentType.formURLEncoded",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 4,
+      "symbol": "HTTPHeaderField",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 5,
+      "symbol": "HTTPHeaderField.rawValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 8,
+      "symbol": "HTTPHeaderField.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 13,
+      "symbol": "HTTPHeaderField",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 16,
+      "symbol": "HTTPHeaderField",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 17,
+      "symbol": "HTTPHeaderField.accept",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 18,
+      "symbol": "HTTPHeaderField.contentType",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPHeaderField.swift",
+      "line": 19,
+      "symbol": "HTTPHeaderField.cacheControl",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 4,
+      "symbol": "HTTPMethod",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 5,
+      "symbol": "HTTPMethod.rawValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 8,
+      "symbol": "HTTPMethod.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 13,
+      "symbol": "HTTPMethod",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 16,
+      "symbol": "HTTPMethod",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 17,
+      "symbol": "HTTPMethod.get",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 18,
+      "symbol": "HTTPMethod.post",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 19,
+      "symbol": "HTTPMethod.put",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 20,
+      "symbol": "HTTPMethod.patch",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPMethod.swift",
+      "line": 21,
+      "symbol": "HTTPMethod.delete",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPStatus.swift",
+      "line": 4,
+      "symbol": "HTTPStatus",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPStatus.swift",
+      "line": 6,
+      "symbol": "HTTPStatus.rawValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPStatus.swift",
+      "line": 9,
+      "symbol": "HTTPStatus.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPStatus.swift",
+      "line": 14,
+      "symbol": "HTTPStatus",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPStatus.swift",
+      "line": 17,
+      "symbol": "HTTPStatus",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPVersion.swift",
+      "line": 9,
+      "symbol": "HTTPVersion.rawValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPVersion.swift",
+      "line": 12,
+      "symbol": "HTTPVersion.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPVersion.swift",
+      "line": 21,
+      "symbol": "HTTPVersion.V1_0",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPVersion.swift",
+      "line": 22,
+      "symbol": "HTTPVersion.V1_1",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPVersion.swift",
+      "line": 23,
+      "symbol": "HTTPVersion.V2_0",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/HTTPVersion.swift",
+      "line": 24,
+      "symbol": "HTTPVersion.V3_0",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Loaders/JSONDataLoader.swift",
+      "line": 5,
+      "symbol": "JSONDataLoaderError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Loaders/JSONDataLoader.swift",
+      "line": 6,
+      "symbol": "JSONDataLoaderError.fileNotFound(fileName:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Loaders/JSONDataLoader.swift",
+      "line": 7,
+      "symbol": "JSONDataLoaderError.networkError(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Loaders/JSONDataLoader.swift",
+      "line": 11,
+      "symbol": "JSONDataLoader",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Loaders/JSONDataLoader.swift",
+      "line": 15,
+      "symbol": "JSONDataLoader.init(subscriptionQueue:dataTasker:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Loaders/JSONDataLoader.swift",
+      "line": 26,
+      "symbol": "JSONDataLoader.load(fromFileNamed:in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError+Code.swift",
+      "line": 6,
+      "symbol": "FileLoadingError.Code",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError+Code.swift",
+      "line": 12,
+      "symbol": "FileLoadingError.Code.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError+Code.swift",
+      "line": 18,
+      "symbol": "FileLoadingError.Code",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError+parseFrom.swift",
+      "line": 6,
+      "symbol": "FileLoadingError.parse(from:returnedFor:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError.swift",
+      "line": 4,
+      "symbol": "FileLoadingError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError.swift",
+      "line": 4,
+      "symbol": "FileLoadingError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError.swift",
+      "line": 4,
+      "symbol": "FileLoadingError",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError.swift",
+      "line": 19,
+      "symbol": "FileLoadingError.init(code:request:response:underlyingError:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError.swift",
+      "line": 32,
+      "symbol": "FileLoadingError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileLoadingError/FileLoadingError.swift",
+      "line": 36,
+      "symbol": "FileLoadingError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileRequestPublishing.swift",
+      "line": 5,
+      "symbol": "FileRequestPublishing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileRequestPublishing.swift",
+      "line": 6,
+      "symbol": "FileRequestPublishing.perform(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileRequestPublishing.swift",
+      "line": 10,
+      "symbol": "FileRequestPublisher",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileRequestPublishing.swift",
+      "line": 11,
+      "symbol": "FileRequestPublisher.subscriptionQueue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileRequestPublishing.swift",
+      "line": 12,
+      "symbol": "FileRequestPublisher.dataTasker",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/FileRequestPublishing.swift",
+      "line": 15,
+      "symbol": "FileRequestPublisher.init(subscriptionQueue:dataTasker:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 5,
+      "symbol": "ModelTransportRequestPublishing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 7,
+      "symbol": "ModelTransportRequestPublishing.perform(_:decodingWith:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 13,
+      "symbol": "ModelTransportRequestPublishing.encode(dataFor:using:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 19,
+      "symbol": "ModelTransportRequestPublishing.encode(dataFor:intoBodyOf:using:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 26,
+      "symbol": "ModelTransportRequestPublishing.send(dataFor:inBodyOf:encodingWith:decodingWith:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 35,
+      "symbol": "ModelTransportRequestPublisher",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 36,
+      "symbol": "ModelTransportRequestPublisher.transporter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 39,
+      "symbol": "ModelTransportRequestPublisher.init(transporter:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 46,
+      "symbol": "ModelTransportRequestPublisher.perform(_:decodingWith:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 82,
+      "symbol": "ModelTransportRequestPublisher.encode(dataFor:using:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 92,
+      "symbol": "ModelTransportRequestPublisher.encode(dataFor:intoBodyOf:using:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/ModelTransportRequestPublisher.swift",
+      "line": 126,
+      "symbol": "ModelTransportRequestPublisher.send(dataFor:inBodyOf:encodingWith:decodingWith:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 6,
+      "symbol": "NetworkError.Code",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 21,
+      "symbol": "NetworkError.Code.dataEncodingFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 22,
+      "symbol": "NetworkError.Code.dataDecodingFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 24,
+      "symbol": "NetworkError.Code.missingResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 25,
+      "symbol": "NetworkError.Code.responseMissingData",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 67,
+      "symbol": "NetworkError.Code",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 71,
+      "symbol": "NetworkError.Code",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 73,
+      "symbol": "NetworkError.Code.init(httpURLResponse:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+Code.swift",
+      "line": 100,
+      "symbol": "NetworkError.Code",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+parseFrom.swift",
+      "line": 6,
+      "symbol": "NetworkError.parse(from:and:returnedFor:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError+parseFrom.swift",
+      "line": 30,
+      "symbol": "NetworkError.parse(from:returnedFor:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError.swift",
+      "line": 4,
+      "symbol": "NetworkError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError.swift",
+      "line": 4,
+      "symbol": "NetworkError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError.swift",
+      "line": 4,
+      "symbol": "NetworkError",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError.swift",
+      "line": 19,
+      "symbol": "NetworkError.init(code:request:response:underlyingError:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError.swift",
+      "line": 32,
+      "symbol": "NetworkError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError.swift",
+      "line": 36,
+      "symbol": "NetworkError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/NetworkError/NetworkError.swift",
+      "line": 41,
+      "symbol": "NetworkError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/SessionDataTaskPublishing.swift",
+      "line": 5,
+      "symbol": "SessionDataTaskPublishing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/SessionDataTaskPublishing.swift",
+      "line": 6,
+      "symbol": "SessionDataTaskPublishing.DataTaskResponse",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/SessionDataTaskPublishing.swift",
+      "line": 7,
+      "symbol": "SessionDataTaskPublishing.DataTaskFailure",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/SessionDataTaskPublishing.swift",
+      "line": 9,
+      "symbol": "SessionDataTaskPublishing.response(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/TransportRequestPublisher.swift",
+      "line": 5,
+      "symbol": "TransportRequestPublishing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/TransportRequestPublisher.swift",
+      "line": 6,
+      "symbol": "TransportRequestPublishing.perform(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/TransportRequestPublisher.swift",
+      "line": 10,
+      "symbol": "TransportRequestPublisher",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/TransportRequestPublisher.swift",
+      "line": 11,
+      "symbol": "TransportRequestPublisher.subscriptionQueue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/TransportRequestPublisher.swift",
+      "line": 12,
+      "symbol": "TransportRequestPublisher.dataTasker",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Networking/TransportRequestPublisher.swift",
+      "line": 15,
+      "symbol": "TransportRequestPublisher.init(subscriptionQueue:dataTasker:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/FileResponse.swift",
+      "line": 4,
+      "symbol": "FileResponse",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/FileResponse.swift",
+      "line": 5,
+      "symbol": "FileResponse.request",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/FileResponse.swift",
+      "line": 6,
+      "symbol": "FileResponse.response",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/FileResponse.swift",
+      "line": 7,
+      "symbol": "FileResponse.body",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/FileResponse.swift",
+      "line": 11,
+      "symbol": "FileResponse.init(request:response:body:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponding.swift",
+      "line": 3,
+      "symbol": "NetworkResponding",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponding.swift",
+      "line": 4,
+      "symbol": "NetworkResponding.Response",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponding.swift",
+      "line": 6,
+      "symbol": "NetworkResponding.request",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponding.swift",
+      "line": 7,
+      "symbol": "NetworkResponding.response",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponding.swift",
+      "line": 8,
+      "symbol": "NetworkResponding.body",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 4,
+      "symbol": "NetworkResponse",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 5,
+      "symbol": "NetworkResponse.request",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 6,
+      "symbol": "NetworkResponse.response",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 7,
+      "symbol": "NetworkResponse.body",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 11,
+      "symbol": "NetworkResponse.init(request:response:body:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 24,
+      "symbol": "NetworkResponse",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 26,
+      "symbol": "NetworkResponse.status",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 30,
+      "symbol": "NetworkResponse.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Responses/NetworkResponse.swift",
+      "line": 34,
+      "symbol": "NetworkResponse.headers",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/FormEncoder.swift",
+      "line": 8,
+      "symbol": "FormEncoder.queryItems(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/FormEncoder.swift",
+      "line": 12,
+      "symbol": "FormEncoder.urlEncode(string:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/FormEncoder.swift",
+      "line": 16,
+      "symbol": "FormEncoder.urlEncode(queryItem:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/FormEncoder.swift",
+      "line": 23,
+      "symbol": "FormEncoder.encode(formItems:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/RequestConfigurator.swift",
+      "line": 4,
+      "symbol": "RequestConfigurator",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/RequestConfigurator.swift",
+      "line": 5,
+      "symbol": "RequestConfigurator.HTTPHeaders",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/RequestConfigurator.swift",
+      "line": 7,
+      "symbol": "RequestConfigurator.configure(_:withHeaders:method:body:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/RequestConfigurator.swift",
+      "line": 24,
+      "symbol": "RequestConfigurator",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/NetStack/NetStack/Sources/Core/Utils/RequestConfigurator.swift",
+      "line": 28,
+      "symbol": "RequestConfigurator.DefaultHeaders.postJSON",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/NetStack/NetStack"
+}
