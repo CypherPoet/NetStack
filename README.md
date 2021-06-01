@@ -59,7 +59,7 @@ You can add `NetStack` as a package dependency in your `Package.swift` file:
 let package = Package(
     //...
     dependencies: [
-        .package(url: "https://github.com/CypherPoet/NetStack", from: "0.0.3"),
+        .package(url: "https://github.com/CypherPoet/NetStack", .exact("0.0.4")),
     ],
     //...
 )
