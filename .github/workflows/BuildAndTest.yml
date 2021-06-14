@@ -2,20 +2,17 @@ name: Build & Test
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
-  macos:
-    runs-on: macos-11.0
+  build:
+    runs-on: macos-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Build
         run: swift build -v
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_12.2.app/Contents/Developer
       - name: Run tests
         run: swift test -v
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_12.2.app/Contents/Developer
