@@ -63,27 +63,12 @@ let package = Package(
         .package(
             name: "CypherPoetNetStack",
             url: "https://github.com/CypherPoet/NetStack",
-            .exact("0.0.4")
+            .exact("0.0.5")
         ),
     ],
     //...
 )
 ```
-
-<!-- From there, refer to `NetStack` as a "target dependency" in any of _your_ package's targets that need it.
-
-```swift
-targets: [
-    .target(
-        name: "YourLibrary",
-        dependencies: [
-          "NetStack",
-        ],
-        ...
-    ),
-    ...
-]
-``` -->
 
 From there, refer to the `NetStack` "product" delivered by the `CypherPoetNetStack` "package" inside of any of your project's target dependencies:
 
@@ -129,7 +114,9 @@ Contributions to `NetStack` are most welcome. Check out some of the [issue templ
 
 ### 📜 Creating & Building Documentation
 
-Documentation is built with [Xcode's DocC](https://developer.apple.com/documentation/docc). More details are forthcoming here -- but for now,  see [Apple's guidance on how to build, run, and create DocC content](https://developer.apple.com/documentation/docc/api-reference-syntax).
+Documentation is built with [Xcode's DocC](https://developer.apple.com/documentation/docc). See [Apple's guidance on how to build, run, and create DocC content](https://developer.apple.com/documentation/docc/api-reference-syntax).
+
+For now, the best way to view the docs is to open the project in Xcode and run the `Build Documentation` command. At some point in the future, I'm hoping to leverage the tooling the develops for generating/hosting DocC documentation. (Please feel free to let me know if you have any ideas or tooling recommendations around this 🙂).
 
 
 
