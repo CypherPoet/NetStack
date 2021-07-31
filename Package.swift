@@ -1,15 +1,15 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-    name: "NetStack",
+    name: "CypherPoetNetStack",
     platforms: [
-        .iOS(SupportedPlatform.IOSVersion.v13),
-        .macOS(SupportedPlatform.MacOSVersion.v10_15),
-        .tvOS(SupportedPlatform.TVOSVersion.v13),
-        .watchOS(SupportedPlatform.WatchOSVersion.v6),
+        .iOS(.v15),
+        .macOS(.v12),
+        .tvOS(.v15),
+        .watchOS(.v8),
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
@@ -32,14 +32,14 @@ let package = Package(
         .target(
             name: "NetStack",
             dependencies: [],
-            path: "Sources/Core"
+            path: "Sources/NetStack"
         ),
         .target(
             name: "NetStackTestUtils",
             dependencies: [
                 "NetStack",
             ],
-            path: "Sources/TestUtils"
+            path: "Sources/NetStackTestUtils"
         ),
         .testTarget(
             name: "NetStackTests",
@@ -49,8 +49,9 @@ let package = Package(
             ],
             path: "Tests/",
             resources: [
-                .process("./Data/headline.txt"),
-                .process("./Data/weather-data.json"),
+                .process("Data"),
+//                .process("./Data/headline.txt"),
+//                .process("./Data/weather-data.json"),
             ]
         ),
     ]
