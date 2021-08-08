@@ -1,5 +1,6 @@
 import Foundation
 import XCTest
+import NetStack
 
 
 // References:
@@ -45,9 +46,9 @@ public final class MockURLProtocol<Responder: MockURLResponding>: URLProtocol {
 }
 
 
-private extension MockURLProtocol {
+extension MockURLProtocol {
     
-    func performLoad() async throws {
+    private func performLoad() async throws {
         guard let client = client else {
             preconditionFailure()
         }
@@ -65,7 +66,7 @@ private extension MockURLProtocol {
             let response = try XCTUnwrap(HTTPURLResponse(
                 url: XCTUnwrap(self.request.url),
                 statusCode: 200,
-                httpVersion: "HTTP/1.1",
+                httpVersion: HTTPVersion.V1_1.rawValue,
                 headerFields: nil
             ))
             

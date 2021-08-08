@@ -3,12 +3,15 @@ import Foundation
 
 extension URLSession {
     
-    public convenience init<T: MockURLResponding>(mockResponder: T.Type) {
+    public convenience init<MockURLResponder: MockURLResponding>(
+        mockResponder: MockURLResponder.Type
+    ) {
         let config = URLSessionConfiguration.ephemeral
-        config.protocolClasses = [MockURLProtocol<T>.self]
+        
+        config.protocolClasses = [MockURLProtocol<MockURLResponder>.self]
         
         self.init(configuration: config)
 
-        URLProtocol.registerClass(MockURLProtocol<T>.self)
+        URLProtocol.registerClass(MockURLProtocol<MockURLResponder>.self)
     }
 }

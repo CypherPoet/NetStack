@@ -21,8 +21,7 @@ extension JSONDataLoaderTests {
         
         fileName = TestConstants.FilePaths.weatherDataJSON
         bundle = .module
-//        urlSession = URLSession(mockResponder: MockDataURLResponder.self)
-        urlSession = .shared
+        urlSession = .init(configuration: .ephemeral)
         
         sut = makeSUT()
     }

@@ -19,20 +19,11 @@ public struct NetworkDataTransporter: NetworkDataTransporting {
     /// - Throws: ``NetworkError``
     public func perform(_ request: URLRequest) async throws -> NetworkResponse {
         do {
-            let (data, urlResponse) = try await urlSession.data(for: request)
+            let (responseData, urlResponse) = try await urlSession.data(for: request)
             
-            guard let httpURLResponse = urlResponse as? HTTPURLResponse else {
-                throw NetworkError(
-                    code: .invalidResponse,
-                    request: request,
-                    response: nil,
-                    underlyingError: nil
-                )
-            }
-
             if let parsedError = NetworkError.parse(
-                from: data,
-                and: httpURLResponse,
+                from: responseData,
+                and: urlResponse,
                 returnedFor: request
             ) {
                 throw parsedError
@@ -40,8 +31,8 @@ public struct NetworkDataTransporter: NetworkDataTransporting {
             
             return NetworkResponse(
                 request: request,
-                response: httpURLResponse,
-                body: data
+                response: urlResponse as! HTTPURLResponse,
+                body: responseData
             )
         } catch (let urlError as URLError) {
             throw NetworkError.parse(from: urlError, returnedFor: request)

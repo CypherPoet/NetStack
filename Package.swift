@@ -50,8 +50,6 @@ let package = Package(
             path: "Tests/",
             resources: [
                 .process("Data"),
-//                .process("./Data/headline.txt"),
-//                .process("./Data/weather-data.json"),
             ]
         ),
     ]

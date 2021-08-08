@@ -3,15 +3,15 @@ import NetStack
 import NetStackTestUtils
 
 
-extension DataUploader {
+extension ModelTransporter {
     
     enum MockDataURLResponder: MockURLResponding {
-        typealias ResponseError = Never
+        typealias ResponseError = Error
         
-        static let responseData = "Data Upload Succeeded 🎉".data(using: .utf8)!
+        static let responseModel = TestConstants.SampleModels.player
         
         static func respond(to request: URLRequest) async throws -> Data {
-            responseData
+            return try JSONEncoder().encode(responseModel)
         }
     }
     
