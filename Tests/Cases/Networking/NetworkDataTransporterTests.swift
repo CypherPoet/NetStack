@@ -1,26 +1,25 @@
 import XCTest
 import NetStack
-import NetStackTestUtils
 
 
-class DataUploaderTests: XCTestCase {
-    private typealias SystemUnderTest = DataUploader
-    private typealias MockDataURLResponder = SystemUnderTest.MockDataURLResponder
-    private typealias MockErrorURLResponder = SystemUnderTest.MockErrorURLResponder
-
+class NetworkDataTransporterTests: XCTestCase {
+    private typealias SystemUnderTest = NetworkDataTransporter
     
+    private typealias MockDataURLResponder = NetworkDataTransporter.MockDataURLResponder
+    private typealias MockErrorURLResponder = NetworkDataTransporter.MockErrorURLResponder
+   
     private var urlSession: URLSession!
     private var sut: SystemUnderTest!
 }
 
 
 // MARK: - Lifecycle
-extension DataUploaderTests {
+extension NetworkDataTransporterTests {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
 
-        urlSession = .init(mockResponder: MockDataURLResponder.self)
+        urlSession = URLSession(mockResponder: MockDataURLResponder.self)
         sut = makeSUT()
     }
 
@@ -35,7 +34,7 @@ extension DataUploaderTests {
 
 
 // MARK: - Factories
-extension DataUploaderTests {
+extension NetworkDataTransporterTests {
 
     private func makeSUT() -> SystemUnderTest {
         .init(
@@ -43,6 +42,7 @@ extension DataUploaderTests {
         )
     }
 
+    
     /// Helper to make the system under test from any default initializer
     /// and then test its initial conditions
     private func makeSUTFromDefaults() -> SystemUnderTest {
@@ -52,7 +52,7 @@ extension DataUploaderTests {
 
 
 // MARK: - "Given" Helpers (Conditions Exist)
-extension DataUploaderTests {
+extension NetworkDataTransporterTests {
 
     private func givenSomething() {
         // some state or condition is established
@@ -61,37 +61,35 @@ extension DataUploaderTests {
 
 
 // MARK: - "When" Helpers (Actions Are Performed)
-extension DataUploaderTests {
+extension NetworkDataTransporterTests {
 
-    private func whenUploadExecutes() async throws -> NetworkResponse {
-        let data = "Test Message".data(using: .utf8)!
-        
-        return try await sut.upload(
-            data,
-            to: TestConstants.EndpointURLs.example
-        )
+    private func whenSomethingHappens() {
+        // perform some action
     }
 }
 
 
 // MARK: - Core Functionality
-extension DataUploaderTests {
+extension NetworkDataTransporterTests {
 
-    func test_UploadDataToURL_WhenResponseSucceeds_ReturnsNetworkResponse() async throws {
-        let response = try await whenUploadExecutes()
-        let actualResponseData = response.body
-        let expectedResponseData = SystemUnderTest.MockDataURLResponder.responseData
-
-        XCTAssertEqual(actualResponseData, expectedResponseData)
+    func test_PerformRequest_WhenResponseIsSuccessful_ReturnsNetworkResponse() async throws {
+        let request = URLRequest(url: TestConstants.EndpointURLs.example)
+        
+        let expectedData = try await MockDataURLResponder.respond(to: request)
+        let actualData = try await sut.perform(request).body
+        
+        XCTAssertEqual(actualData, expectedData)
     }
     
     
-    func test_PerformUploadRequest_WhenResponseFails_ThrowsNetworkError() async throws {
+    func test_PerformRequest_WhenResponseIsUnsuccessful_ReturnsNetworkError() async throws {
         urlSession = .init(mockResponder: MockErrorURLResponder.self)
         sut = makeSUT()
         
+        let request = URLRequest(url: TestConstants.EndpointURLs.example)
+        
         do {
-            let _ = try await whenUploadExecutes()
+            let _ = try await sut.perform(request)
             
             XCTFail("Unexpected Success of request")
         } catch {

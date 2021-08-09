@@ -15,6 +15,7 @@ extension NetworkDataTransporter {
         }
     }
     
+
     enum MockErrorURLResponder: MockURLResponding {
         typealias ResponseError = URLError
         
