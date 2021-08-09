@@ -63,7 +63,7 @@ let package = Package(
         .package(
             name: "CypherPoetNetStack",
             url: "https://github.com/CypherPoet/NetStack",
-            .exact("0.0.5")
+            .exact("0.0.6")
         ),
     ],
     //...
