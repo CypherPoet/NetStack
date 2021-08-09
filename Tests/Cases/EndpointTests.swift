@@ -1,5 +1,5 @@
 import XCTest
-@testable import NetStack
+import NetStack
 
 
 final class EndpointTests: XCTestCase {

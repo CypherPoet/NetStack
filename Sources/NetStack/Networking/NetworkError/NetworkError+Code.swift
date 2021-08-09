@@ -99,8 +99,8 @@ extension NetworkError.Code {
 // MARK: - Init from `URLError`
 extension NetworkError.Code {
 
-    /// Attempts to construct a `NetworkError` from
-    /// a [`URLError`](https://developer.apple.com/documentation/foundation/urlerror).
+    /// Attempts to construct a ``NetStack/NetworkError`` from
+    /// a `URLError`.
     ///
     /// This can be useful for determining why request failed upon being launched -- before
     /// any other significant response data could be returned.
